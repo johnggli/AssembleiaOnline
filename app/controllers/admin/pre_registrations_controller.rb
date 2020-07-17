@@ -57,7 +57,7 @@ class Admin::PreRegistrationsController < AdminController
   def destroy
     @pre_registration.destroy
     respond_to do |format|
-      format.html { redirect_to pre_registrations_url, notice: 'Pre registration was successfully destroyed.' }
+      format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

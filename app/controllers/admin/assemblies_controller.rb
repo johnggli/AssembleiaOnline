@@ -1,4 +1,4 @@
-class AssembliesController < ApplicationController
+class Admin::AssembliesController < AdminController
   before_action :set_assembly, only: [:show, :edit, :update, :destroy]
 
   # GET /assemblies

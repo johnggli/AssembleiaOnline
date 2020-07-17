@@ -1,4 +1,4 @@
-class PreRegistrationsController < ApplicationController
+class Admin::PreRegistrationController < AdminController
   before_action :set_pre_registration, only: [:show, :edit, :update, :destroy]
 
   # GET /pre_registrations

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @pre_registration.cpf %>
+</p>
+
+<p>
+  <strong>Bloc:</strong>
+  <%= @pre_registration.bloc %>
+</p>
+
+<p>
+  <strong>Ap:</strong>
+  <%= @pre_registration.ap %>
+</p>
+
+<%= link_to 'Edit', edit_pre_registration_path(@pre_registration) %> |
+<%= link_to 'Back', pre_registrations_path %>

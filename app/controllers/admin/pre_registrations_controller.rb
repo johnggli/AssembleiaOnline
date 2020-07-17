@@ -28,8 +28,8 @@ class Admin::PreRegistrationsController < AdminController
     @pre_registration = PreRegistration.new(pre_registration_params)
 
     respond_to do |format|
-      if @pre_registration.save
-        format.html { redirect_to @pre_registration, notice: 'Pre registration was successfully created.' }
+    if @pre_registration.save
+      format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully created.' }
         format.json { render :show, status: :created, location: @pre_registration }
       else
         format.html { render :new }

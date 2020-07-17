@@ -1,6 +1,6 @@
-<%= simple_form_for @pre_registration, :url => admin_pre_registrations_path, :method => :post  do |p| %>
+<%= simple_form_for @pre_registration, :url => url, :method => :post  do |p| %>
   <%= p.input :cpf %>
-  <%= p.input :bloc, collection: 1..24, include_blank: 'Selecione ...' %>
-  <%= p.input :ap, collection: 101..105, include_blank: 'Selecione ...' %>
+  <%= p.input :bloc, collection: 1..24, include_blank: 'Selecione um Bloco...' %>
+  <%= p.input :ap, collection: 101..105, include_blank: 'Selecione um Apartamento...' %>
   <%= p.submit 'Registrar' %>
 <% end %>

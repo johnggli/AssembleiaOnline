@@ -43,7 +43,7 @@ class Admin::PreRegistrationsController < AdminController
   def update
     respond_to do |format|
       if @pre_registration.update(pre_registration_params)
-        format.html { redirect_to @pre_registration, notice: 'Pre registration was successfully updated.' }
+        format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully updated.' }
         format.json { render :show, status: :ok, location: @pre_registration }
       else
         format.html { render :edit }

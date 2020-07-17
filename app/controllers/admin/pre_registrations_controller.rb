@@ -1,5 +1,6 @@
-class Admin::PreRegistrationController < AdminController
+class Admin::PreRegistrationsController < AdminController
   before_action :set_pre_registration, only: [:show, :edit, :update, :destroy]
+
 
   # GET /pre_registrations
   # GET /pre_registrations.json
@@ -71,4 +72,5 @@ class Admin::PreRegistrationController < AdminController
     def pre_registration_params
       params.require(:pre_registration).permit(:cpf, :bloc, :ap)
     end
+
 end

@@ -1,32 +1,6 @@
-<%= form_with(model: pre_registration, local: true) do |form| %>
-  <% if pre_registration.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pre_registration.errors.count, "error") %> prohibited this pre_registration from being saved:</h2>
-
-      <ul>
-        <% pre_registration.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
-  </div>
-
-  <div class="field">
-    <%= form.label :bloc %>
-    <%= form.number_field :bloc %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ap %>
-    <%= form.number_field :ap %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= simple_form_for (new_admin_pre_registration_path) do |p| %>
+  <%= p.input :cpf %>
+  <%= p.input :bloc, collection: 1..24, include_blank: 'Selecione ...' %>
+  <%= p.input :ap, collection: 101..105, include_blank: 'Selecione ...' %>
+  <%= p.submit 'Registrar' %>
 <% end %>

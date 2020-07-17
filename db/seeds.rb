@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+PreRegistration.create!(
+    cpf: '111.111.111-11',
+    bloc: 1,
+    ap: 101
+)

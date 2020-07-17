@@ -18,9 +18,9 @@
         <td><%= pre_registration.cpf %></td>
         <td><%= pre_registration.bloc %></td>
         <td><%= pre_registration.ap %></td>
-        <td><%= link_to 'Show', pre_registration %></td>
-        <td><%= link_to 'Edit', edit_pre_registration_path(pre_registration) %></td>
-        <td><%= link_to 'Destroy', pre_registration, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_pre_registration_path(pre_registration)%></td>
+        <td><%= link_to 'Edit', edit_admin_pre_registration_path(pre_registration) %></td>
+        <td><%= link_to 'Destroy','' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Pre Registration', new_pre_registration_path %>
+<%= link_to 'New Pre Registration', new_admin_pre_registration_path %>

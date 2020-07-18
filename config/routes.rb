@@ -23,5 +23,8 @@ Rails.application.routes.draw do
     resources :pre_registrations 
   end
   devise_for :users
+
+  patch 'admin/users/:id/set_paid', to:'admin/users#set_paid', as: :set_paid
+  patch 'admin/users/:id/set_not_paid', to:'admin/users#set_not_paid', as: :set_not_paid
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

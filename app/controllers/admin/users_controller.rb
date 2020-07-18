@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
 
-  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :set_user, only: [:edit, :update, :destroy, :set_paid, :set_not_paid]
 
   def index
     @users = User.includes(:pre_registration)
@@ -46,12 +46,23 @@ class Admin::UsersController < AdminController
       format.json { head :no_content }
     end
   end
+
+  def set_paid
+    @user.update(:paid=>true)
+    redirect_to admin_users_path
+  end
+
+  def set_not_paid
+    @user.update(:paid=>false)
+    redirect_to admin_users_path
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
   end
   def user_params
-    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :pre_registration_id, :role)
+    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :pre_registration_id, :role, :paid)
   end
 
 end

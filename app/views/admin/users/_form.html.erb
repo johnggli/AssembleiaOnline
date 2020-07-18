@@ -1,0 +1,6 @@
+<%= simple_form_for @user, :url => url, :method => method  do |p| %>
+    <%= p.input :user_name %>
+    <%= p.input :pre_registration_id %>
+
+    <%= p.submit 'Registrar' %>
+  <% end %>

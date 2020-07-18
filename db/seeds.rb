@@ -11,3 +11,13 @@ PreRegistration.create!(
     bloc: 1,
     ap: 101
 )
+
+User.create!(
+    email: "user@user.com",
+    password: 123456,
+    password_confirmation: 123456,
+    user_name: "John Joao",
+    role: 0,
+    paid: true,
+    pre_registration_id: 2
+)

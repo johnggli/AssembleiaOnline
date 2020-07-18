@@ -7,4 +7,8 @@ class User < ApplicationRecord
   belongs_to :pre_registration
   has_many :options, :through => :votes 
   enum role: [:user, :admin]
+
+  def set_default_password
+    
+  end
 end

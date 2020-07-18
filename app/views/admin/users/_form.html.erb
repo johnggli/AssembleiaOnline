@@ -1,6 +1,6 @@
 <%= simple_form_for @user, :url => url, :method => method  do |p| %>
+    <%= p.association :pre_registration, label: "Pre registro", label_method: :cpf, value_method: :id, include_blank: "Selecione o CPF" %>
     <%= p.input :user_name %>
-    <%= p.input :pre_registration_id %>
     <%= p.input :email %>
     <%= p.input :password %>
     <%= p.input :password_confirmation %>

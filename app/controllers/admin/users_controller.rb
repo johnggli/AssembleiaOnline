@@ -24,7 +24,7 @@ class Admin::UsersController < AdminController
     @use = User.find(params[:id])
   end
   def user_params
-    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :pre_registration_id)
+    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :pre_registration_id, :role)
   end
 
 end

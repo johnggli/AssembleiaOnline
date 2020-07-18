@@ -5,10 +5,15 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :pre_registration
-  has_many :options, :through => :votes 
+
+  has_many :options, :through => :votes
+
   enum role: [:user, :admin]
 
   after_initialize :set_default_role, :if => :new_record?
+
+  validates :pre_registration_id, presence: true, uniqueness: true
+  validates :user_name, presence: true
 
   def set_default_role
     self.role ||= :user

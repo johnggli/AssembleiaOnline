@@ -5,9 +5,11 @@
 <table>
   <thead>
     <tr>
+      <th>#</th>
       <th>Cpf</th>
       <th>Bloc</th>
       <th>Ap</th>
+      <th>Criado em</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +17,11 @@
   <tbody>
     <% @pre_registrations.each do |pre_registration| %>
       <tr>
+        <td><%= pre_registration.id %></td>
         <td><%= pre_registration.cpf %></td>
         <td><%= pre_registration.bloc %></td>
         <td><%= pre_registration.ap %></td>
+        <td><%= pre_registration.created_at %></td>
         <td><%= link_to 'Show', admin_pre_registration_path(pre_registration)%></td>
         <td><%= link_to 'Edit', edit_admin_pre_registration_path(pre_registration) %></td>
         <td><%= link_to 'Destroy', admin_pre_registration_path(pre_registration), method: :delete, data: { confirm: 'Are you sure?' } %></td>

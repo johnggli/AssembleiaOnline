@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(version: 2020_07_17_015532) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "user_name"
-    t.integer "role"
-    t.boolean "paid"
+    t.integer "role", default: 0
+    t.boolean "paid", default: true
     t.bigint "pre_registration_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["pre_registration_id"], name: "index_users_on_pre_registration_id"

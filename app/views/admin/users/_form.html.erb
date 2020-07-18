@@ -4,5 +4,5 @@
     <%= p.input :email %>
     <%= p.input :role, collection: User.roles.keys.map {|role| [role.titleize,role]}, include_blank: false %>
 
-    <%= p.submit 'Criar Usuário' %>
+    <%= p.submit controller.action_name == 'new' ? 'Criar Usuario' : 'Atualizar Usuario'%>
   <% end %>

@@ -48,12 +48,12 @@ class Admin::UsersController < AdminController
   end
 
   def set_paid
-    @user.update(:paid=>true)
+    @user.update(paid: true)
     redirect_to admin_users_path
   end
 
   def set_not_paid
-    @user.update(:paid=>false)
+    @user.update(paid: false)
     redirect_to admin_users_path
   end
 

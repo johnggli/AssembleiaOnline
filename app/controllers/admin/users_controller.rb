@@ -6,7 +6,8 @@ class Admin::UsersController < AdminController
     @user = User.new
   end
   def create
-    @user = User.new(user_params)
+    #@user = User.new(user_params)
+    @user = User.create_with_password(user_params)
     respond_to do |format|
       if @user.save
         format.html { redirect_to admin_users_path, notice: 'Pre registration was successfully created.' }

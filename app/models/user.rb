@@ -8,7 +8,14 @@ class User < ApplicationRecord
   has_many :options, :through => :votes 
   enum role: [:user, :admin]
 
-  def set_default_password
-    
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :user
+  end
+
+  def self.create_with_password(attr={})
+    generated_password = "123456"
+    self.new(attr.merge(password: generated_password, password_confirmation: generated_password))
   end
 end

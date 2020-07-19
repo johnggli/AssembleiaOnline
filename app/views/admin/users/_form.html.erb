@@ -1,0 +1,8 @@
+<%= simple_form_for @user, :url => url, :method => method  do |p| %>
+    <%= p.association :pre_registration, label: "Pré-Registro", label_method: :cpf, value_method: :id, include_blank: "Selecione um CPF" %>
+    <%= p.input :user_name %>
+    <%= p.input :email %>
+    <%= p.input :role, collection: User.roles.keys.map {|role| [role.titleize,role]}, include_blank: false %>
+
+    <%= p.submit controller.action_name == 'edit' ? 'Atualizar Usuário' : 'Criar Usuário'%>
+  <% end %>

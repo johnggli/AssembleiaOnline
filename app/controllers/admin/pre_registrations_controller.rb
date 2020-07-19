@@ -1,5 +1,6 @@
-class Admin::PreRegistrationController < AdminController
+class Admin::PreRegistrationsController < AdminController
   before_action :set_pre_registration, only: [:show, :edit, :update, :destroy]
+
 
   # GET /pre_registrations
   # GET /pre_registrations.json
@@ -27,8 +28,8 @@ class Admin::PreRegistrationController < AdminController
     @pre_registration = PreRegistration.new(pre_registration_params)
 
     respond_to do |format|
-      if @pre_registration.save
-        format.html { redirect_to @pre_registration, notice: 'Pre registration was successfully created.' }
+    if @pre_registration.save
+      format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully created.' }
         format.json { render :show, status: :created, location: @pre_registration }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class Admin::PreRegistrationController < AdminController
   def update
     respond_to do |format|
       if @pre_registration.update(pre_registration_params)
-        format.html { redirect_to @pre_registration, notice: 'Pre registration was successfully updated.' }
+        format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully updated.' }
         format.json { render :show, status: :ok, location: @pre_registration }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class Admin::PreRegistrationController < AdminController
   def destroy
     @pre_registration.destroy
     respond_to do |format|
-      format.html { redirect_to pre_registrations_url, notice: 'Pre registration was successfully destroyed.' }
+      format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -71,4 +72,5 @@ class Admin::PreRegistrationController < AdminController
     def pre_registration_params
       params.require(:pre_registration).permit(:cpf, :bloc, :ap)
     end
+
 end

@@ -2,11 +2,13 @@
   <%= p.input :title %>
   <%= p.input :start_time %>
   <%= p.input :finish_time %>
-  <%= p.file_field :ata, accept:"application/pdf, application/vnd.ms-excel" %>
+  <%= p.file_field :ata, accept:"application/pdf, application/vnd.ms-excel" %><br />
   <%#= p.input :ata, as: :file, accept:"application/pdf, application/vnd.ms-excel" %>
   <%# if controller.action_name == 'edit' %>
   <% if p.object.ata.present? %>
     <%= p.object.ata.blob.filename.sanitized %>
+    <%= p.check_box :checkbox_checked %>
+    <span class="small_label">Remover ata</span>
   <% end %>
   <%= p.rich_text_area :description %>
   

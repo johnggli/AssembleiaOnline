@@ -22,6 +22,8 @@ class Assembly < ApplicationRecord
 
     has_one_attached :ata
 
+    attr_accessor :checkbox_checked
+
     after_initialize :set_default_state, if: :new_record?
 
     def set_default_state

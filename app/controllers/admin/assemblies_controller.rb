@@ -40,6 +40,9 @@ class Admin::AssembliesController < AdminController
   # PATCH/PUT /assemblies/1
   # PATCH/PUT /assemblies/1.json
   def update
+    if params[:assembly][:checkbox_checked] == "1"
+      @assembly.update(ata: nil)
+    end
     respond_to do |format|
       if @assembly.update(assembly_params)
         format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully updated.' }

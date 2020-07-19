@@ -26,9 +26,8 @@
         <td><%= assembly.status %></td>
         <td><%= assembly.topics_count %></td>
         <td><%= assembly.url_ata %></td>
-        <td><%= link_to 'Show', assembly %></td>
-        <td><%= link_to 'Edit', edit_assembly_path(assembly) %></td>
-        <td><%= link_to 'Destroy', assembly, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_admin_assembly_path(assembly) %></td>
+        <td><%= link_to 'Destroy', admin_assembly_path(assembly), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +35,4 @@
 
 <br>
 
-<%= link_to 'New Assembly', new_assembly_path %>
+<%= link_to 'New Assembly', new_admin_assembly_path %>

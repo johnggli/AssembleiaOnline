@@ -1,52 +1,10 @@
-<%= form_with(model: assembly, local: true) do |form| %>
-  <% if assembly.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(assembly.errors.count, "error") %> prohibited this assembly from being saved:</h2>
-
-      <ul>
-        <% assembly.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :finish_time %>
-    <%= form.datetime_select :finish_time %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :topics_count %>
-    <%= form.number_field :topics_count %>
-  </div>
-
-  <div class="field">
-    <%= form.label :url_ata %>
-    <%= form.text_field :url_ata %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+<%= simple_form_for @assembly, :url => url, :method => method  do |p| %>
+  <%= p.input :title %>
+  <%= p.input :start_time %>
+  <%= p.input :finish_time %>
+  <%#= p.input :url_ata %>
+  <%#= p.input :description %>
+  
+  
+  <%= p.submit controller.action_name == 'edit' ? 'Atualizar Assembléia' : 'Criar Assembléia' %>
 <% end %>

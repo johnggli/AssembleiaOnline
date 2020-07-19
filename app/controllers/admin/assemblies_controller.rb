@@ -28,7 +28,7 @@ class Admin::AssembliesController < AdminController
 
     respond_to do |format|
       if @assembly.save
-        format.html { redirect_to @assembly, notice: 'Assembly was successfully created.' }
+        format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully created.' }
         format.json { render :show, status: :created, location: @assembly }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::AssembliesController < AdminController
   def update
     respond_to do |format|
       if @assembly.update(assembly_params)
-        format.html { redirect_to @assembly, notice: 'Assembly was successfully updated.' }
+        format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully updated.' }
         format.json { render :show, status: :ok, location: @assembly }
       else
         format.html { render :edit }

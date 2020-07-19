@@ -56,7 +56,7 @@ class Admin::AssembliesController < AdminController
   def destroy
     @assembly.destroy
     respond_to do |format|
-      format.html { redirect_to assemblies_url, notice: 'Assembly was successfully destroyed.' }
+      format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,6 @@ class Admin::AssembliesController < AdminController
 
     # Only allow a list of trusted parameters through.
     def assembly_params
-      params.require(:assembly).permit(:title, :start_time, :finish_time, :description, :status, :topics_count, :url_ata)
+      params.require(:assembly).permit(:title, :start_time, :finish_time, :description, :state, :topics_count, :url_ata)
     end
 end

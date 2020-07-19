@@ -3,7 +3,7 @@
   <%= p.input :start_time %>
   <%= p.input :finish_time %>
   <%#= p.input :url_ata %>
-  <%#= p.input :description %>
+  <%= p.rich_text_area :description %>
   
   
   <%= p.submit controller.action_name == 'edit' ? 'Atualizar Assembléia' : 'Criar Assembléia' %>

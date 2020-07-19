@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: pre_registrations
+#
+#  id         :bigint           not null, primary key
+#  ap         :integer
+#  bloc       :integer
+#  cpf        :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class PreRegistration < ApplicationRecord
     has_one :user
 

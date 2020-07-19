@@ -24,6 +24,13 @@
         <td><%= assembly.finish_time %></td>
         <td><%= assembly.state %></td>
         <td><%= assembly.description %></td>
+        <td>
+          <%if assembly.state == 'open'%>
+            <%= link_to 'Bloquear', set_not_state_path(assembly), method: :patch %>
+          <%else%>  
+            <%= link_to 'Liberar', set_state_path(assembly), method: :patch %>
+          <% end %>
+        </td>
         <td><%= link_to 'Edit', edit_admin_assembly_path(assembly) %></td>
         <td><%= link_to 'Destroy', admin_assembly_path(assembly), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

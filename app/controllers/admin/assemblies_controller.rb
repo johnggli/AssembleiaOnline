@@ -1,5 +1,5 @@
 class Admin::AssembliesController < AdminController
-  before_action :set_assembly, only: [:show, :edit, :update, :destroy]
+  before_action :set_assembly, only: [:show, :edit, :update, :destroy, :set_state, :set_not_state]
 
   # GET /assemblies
   # GET /assemblies.json
@@ -59,6 +59,16 @@ class Admin::AssembliesController < AdminController
       format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def set_state
+    @assembly.update(state: :open)
+    redirect_to admin_assemblies_path
+  end
+
+  def set_not_state
+    @assembly.update(state: :close)
+    redirect_to admin_assemblies_path
   end
 
   private

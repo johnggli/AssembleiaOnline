@@ -1,8 +1,13 @@
-<%= simple_form_for @assembly, :url => url, :method => method  do |p| %>
+<%= simple_form_for @assembly, url: url, method: method  do |p| %>
   <%= p.input :title %>
   <%= p.input :start_time %>
   <%= p.input :finish_time %>
-  <%#= p.input :url_ata %>
+  <%= p.file_field :url_ata, accept:"application/pdf, application/vnd.ms-excel" %>
+  <%#= p.input :url_ata, as: :file, accept:"application/pdf, application/vnd.ms-excel" %>
+  <%# if controller.action_name == 'edit' %>
+  <% if p.object.url_ata.present? %>
+    <%= p.object.url_ata.blob.filename.sanitized %>
+  <% end %>
   <%= p.rich_text_area :description %>
   
   

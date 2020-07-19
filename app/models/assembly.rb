@@ -20,6 +20,8 @@ class Assembly < ApplicationRecord
 
     enum state: [:sketch, :open, :close]
 
+    has_one_attached :url_ata
+
     after_initialize :set_default_state, if: :new_record?
 
     def set_default_state

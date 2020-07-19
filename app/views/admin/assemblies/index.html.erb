@@ -10,7 +10,7 @@
       <th>Start time</th>
       <th>Finish time</th>
       <th>State</th>
-      <th>Descrição</th>
+      <!-- <th>Descrição</th> -->
       <th colspan="3">Ações</th>
     </tr>
   </thead>
@@ -23,7 +23,7 @@
         <td><%= assembly.start_time %></td>
         <td><%= assembly.finish_time %></td>
         <td><%= assembly.state %></td>
-        <td><%= assembly.description %></td>
+        <!-- <td><%= assembly.description %></td> -->
         <td>
           <%if assembly.state == 'open'%>
             <%= link_to 'Bloquear', set_not_state_path(assembly), method: :patch %>

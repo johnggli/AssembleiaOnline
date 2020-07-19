@@ -2,11 +2,11 @@
   <%= p.input :title %>
   <%= p.input :start_time %>
   <%= p.input :finish_time %>
-  <%= p.file_field :url_ata, accept:"application/pdf, application/vnd.ms-excel" %>
-  <%#= p.input :url_ata, as: :file, accept:"application/pdf, application/vnd.ms-excel" %>
+  <%= p.file_field :ata, accept:"application/pdf, application/vnd.ms-excel" %>
+  <%#= p.input :ata, as: :file, accept:"application/pdf, application/vnd.ms-excel" %>
   <%# if controller.action_name == 'edit' %>
-  <% if p.object.url_ata.present? %>
-    <%= p.object.url_ata.blob.filename.sanitized %>
+  <% if p.object.ata.present? %>
+    <%= p.object.ata.blob.filename.sanitized %>
   <% end %>
   <%= p.rich_text_area :description %>
   

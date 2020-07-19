@@ -79,6 +79,6 @@ class Admin::AssembliesController < AdminController
 
     # Only allow a list of trusted parameters through.
     def assembly_params
-      params.require(:assembly).permit(:title, :start_time, :finish_time, :description, :state, :topics_count, :url_ata)
+      params.require(:assembly).permit(:title, :start_time, :finish_time, :description, :state, :topics_count, :ata)
     end
 end

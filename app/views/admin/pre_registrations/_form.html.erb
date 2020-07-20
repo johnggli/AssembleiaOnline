@@ -1,6 +1,6 @@
 <%= simple_form_for @pre_registration, url: url, method: method  do |p| %>
   <%= p.input :cpf %>
   <%= p.input :bloc, collection: 1..24, include_blank: 'Selecione um Bloco...' %>
-  <%= p.input :ap, collection: 101..105, include_blank: 'Selecione um Apartamento...' %>
+  <%= p.input :ap, collection: @apartments, include_blank: 'Selecione um Apartamento...' %>
   <%= p.submit controller.action_name == 'edit' ? 'Atualizar Pré-Registro' : 'Criar Pré-Registro' %>
 <% end %>

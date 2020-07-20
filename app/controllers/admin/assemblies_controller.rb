@@ -28,7 +28,7 @@ class Admin::AssembliesController < AdminController
 
     respond_to do |format|
       if @assembly.save
-        format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully created.' }
+        format.html { redirect_to admin_assembly_path(@assembly), notice: 'Assembly was successfully created.' }
         format.json { render :show, status: :created, location: @assembly }
       else
         format.html { render :new }
@@ -40,9 +40,12 @@ class Admin::AssembliesController < AdminController
   # PATCH/PUT /assemblies/1
   # PATCH/PUT /assemblies/1.json
   def update
+    if params[:assembly][:checkbox_checked] == "1"
+      @assembly.update(ata: nil)
+    end
     respond_to do |format|
       if @assembly.update(assembly_params)
-        format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully updated.' }
+        format.html { redirect_to admin_assembly_path(@assembly), notice: 'Assembly was successfully updated.' }
         format.json { render :show, status: :ok, location: @assembly }
       else
         format.html { render :edit }

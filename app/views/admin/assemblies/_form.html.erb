@@ -1,15 +1,13 @@
 <%= simple_form_for @assembly, url: url, method: method  do |p| %>
   <%= p.input :title %>
-  <%= p.input :start_time %>
-  <%= p.input :finish_time %>
-  <%= p.file_field :ata, accept:"application/pdf, application/vnd.ms-excel" %>
-  <%#= p.input :ata, as: :file, accept:"application/pdf, application/vnd.ms-excel" %>
-  <%# if controller.action_name == 'edit' %>
+  <%= p.input :start_time, as: :datetime, html5: true %>
+  <%= p.input :finish_time, as: :datetime, html5: true %>
+  <%= p.input :ata, as: :file, input_html: { accept:"application/pdf, application/vnd.ms-excel" } %>
   <% if p.object.ata.present? %>
     <%= p.object.ata.blob.filename.sanitized %>
+    <%= p.input :checkbox_checked, label: "Remover ata", as: :boolean, input_html: { checked: false } %>
   <% end %>
-  <%= p.rich_text_area :description %>
-  
-  
+  <%= p.input :description, as: :rich_text_area %>
+
   <%= p.submit controller.action_name == 'edit' ? 'Atualizar Assembléia' : 'Criar Assembléia' %>
 <% end %>

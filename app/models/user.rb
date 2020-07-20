@@ -26,6 +26,8 @@
 #  fk_rails_...  (pre_registration_id => pre_registrations.id)
 #
 class User < ApplicationRecord
+  default_scope { order(id: :desc) }
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

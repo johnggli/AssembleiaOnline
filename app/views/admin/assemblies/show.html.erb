@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @assembly.title %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @assembly.start_time %>
+</p>
+
+<p>
+  <strong>Finish time:</strong>
+  <%= @assembly.finish_time %>
+</p>
+
+<p>
+  <strong>Situação:</strong>
+  <%= @assembly.state %>
+</p>
+
+<p>
+  <strong>Ata:</strong>
+  <% if @assembly.ata.present? %>
+    <%= @assembly.ata.blob.filename.sanitized %>
+  <% else %>
+    Sem ata
+  <% end %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @assembly.description %>
+</p>
+
+<%= link_to 'Edit', edit_admin_assembly_path(@assembly) %> |
+<%= link_to 'Back', admin_assemblies_path %>

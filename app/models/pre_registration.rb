@@ -12,7 +12,7 @@
 class PreRegistration < ApplicationRecord
     default_scope { order(id: :desc) }
     
-    has_one :user
+    has_one :user, dependent: :destroy
 
     validates :cpf, presence: true, uniqueness: true
     validates :bloc, presence: true, length: {maximum:2}

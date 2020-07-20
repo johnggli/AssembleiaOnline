@@ -14,6 +14,8 @@
 #  updated_at   :datetime         not null
 #
 class Assembly < ApplicationRecord
+    default_scope { order(id: :desc) }
+
     has_many :topics
 
     has_rich_text :description
@@ -25,6 +27,10 @@ class Assembly < ApplicationRecord
     attr_accessor :checkbox_checked
 
     after_initialize :set_default_state, if: :new_record?
+
+    validates :title, presence: true, uniqueness: true
+    validates :start_time, presence: true
+    validates :finish_time, presence: true
 
     def set_default_state
         self.state ||= :sketch

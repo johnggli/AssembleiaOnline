@@ -10,6 +10,8 @@
 #  updated_at :datetime         not null
 #
 class PreRegistration < ApplicationRecord
+    default_scope { order(id: :desc) }
+    
     has_one :user
 
     validates :cpf, presence: true, uniqueness: true

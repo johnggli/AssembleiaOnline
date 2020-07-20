@@ -1,5 +1,5 @@
 class Admin::AssembliesController < AdminController
-  before_action :set_assembly, only: [:show, :edit, :update, :destroy]
+  before_action :set_assembly, only: [:show, :edit, :update, :destroy, :set_state, :set_not_state]
 
   # GET /assemblies
   # GET /assemblies.json
@@ -28,7 +28,7 @@ class Admin::AssembliesController < AdminController
 
     respond_to do |format|
       if @assembly.save
-        format.html { redirect_to @assembly, notice: 'Assembly was successfully created.' }
+        format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully created.' }
         format.json { render :show, status: :created, location: @assembly }
       else
         format.html { render :new }
@@ -40,9 +40,12 @@ class Admin::AssembliesController < AdminController
   # PATCH/PUT /assemblies/1
   # PATCH/PUT /assemblies/1.json
   def update
+    if params[:assembly][:checkbox_checked] == "1"
+      @assembly.update(ata: nil)
+    end
     respond_to do |format|
       if @assembly.update(assembly_params)
-        format.html { redirect_to @assembly, notice: 'Assembly was successfully updated.' }
+        format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully updated.' }
         format.json { render :show, status: :ok, location: @assembly }
       else
         format.html { render :edit }
@@ -56,9 +59,19 @@ class Admin::AssembliesController < AdminController
   def destroy
     @assembly.destroy
     respond_to do |format|
-      format.html { redirect_to assemblies_url, notice: 'Assembly was successfully destroyed.' }
+      format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def set_state
+    @assembly.update(state: :open)
+    redirect_to admin_assemblies_path
+  end
+
+  def set_not_state
+    @assembly.update(state: :close)
+    redirect_to admin_assemblies_path
   end
 
   private
@@ -69,6 +82,6 @@ class Admin::AssembliesController < AdminController
 
     # Only allow a list of trusted parameters through.
     def assembly_params
-      params.require(:assembly).permit(:title, :start_time, :finish_time, :description, :status, :topics_count, :url_ata)
+      params.require(:assembly).permit(:title, :start_time, :finish_time, :description, :state, :topics_count, :ata)
     end
 end

@@ -38,10 +38,6 @@ class Assembly < ApplicationRecord
     end
 
     def finish_time_after_start_time?
-        if finish_time && start_time
-            if finish_time < start_time
-                errors.add :finish_time, "must be after start date"
-            end
-        end
+        errors.add :finish_time, "must be after start date" if finish_time && start_time && finish_time < start_time
     end
 end

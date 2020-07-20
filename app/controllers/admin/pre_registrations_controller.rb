@@ -16,16 +16,19 @@ class Admin::PreRegistrationsController < AdminController
   # GET /pre_registrations/new
   def new
     @pre_registration = PreRegistration.new
+    @apartments = set_apartments
   end
 
   # GET /pre_registrations/1/edit
   def edit
+    @apartments = set_apartments
   end
 
   # POST /pre_registrations
   # POST /pre_registrations.json
   def create
     @pre_registration = PreRegistration.new(pre_registration_params)
+    @apartments = set_apartments
 
     respond_to do |format|
     if @pre_registration.save
@@ -41,6 +44,7 @@ class Admin::PreRegistrationsController < AdminController
   # PATCH/PUT /pre_registrations/1
   # PATCH/PUT /pre_registrations/1.json
   def update
+    @apartments = set_apartments
     respond_to do |format|
       if @pre_registration.update(pre_registration_params)
         format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully updated.' }
@@ -63,6 +67,14 @@ class Admin::PreRegistrationsController < AdminController
   end
 
   private
+    def set_apartments
+      [101, 102, 103, 104] +
+      [201, 202, 203, 204] +
+      [301, 302, 303, 304] +
+      [401, 402, 403, 404] +
+      [501, 502, 503, 504]
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_pre_registration
       @pre_registration = PreRegistration.find(params[:id])

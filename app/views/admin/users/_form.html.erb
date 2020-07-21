@@ -1,8 +1,21 @@
-<%= simple_form_for @user, url: url, method: method  do |p| %>
-    <%= p.association :pre_registration, label: "Pré-Registro", label_method: :cpf, value_method: :id, include_blank: "Selecione um CPF" %>
-    <%= p.input :user_name %>
-    <%= p.input :email %>
-    <%= p.input :role, collection: User.roles.keys.map {|role| [role.titleize,role]}, include_blank: false %>
 
-    <%= p.submit controller.action_name == 'edit' ? 'Atualizar Usuário' : 'Criar Usuário'%>
+  <%= simple_form_for @user, url: url, method: method  do |p| %>
+    <div class="row col-md-4">
+      <%= p.association :pre_registration, label: "Pré-Registro", label_method: :cpf, value_method: :id, include_blank: "Selecione um CPF" %>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <%= p.input :user_name %>
+      </div>
+      <div class="col-md-3">
+        <%= p.input :email %>
+      </div>
+    </div>
+    <div class="row col-md-4">
+      <%= p.input :role, collection: User.roles.keys.map {|role| [role.titleize,role]}, include_blank: false %>
+    </div>
+    <div> 
+      <%= p.submit controller.action_name == 'edit' ? 'Atualizar Usuário' : 'Criar Usuário', class:'btn btn-success'%>
+      <%= link_to 'Back', admin_users_path, class:'btn btn-danger' %>
+    </div>
   <% end %>

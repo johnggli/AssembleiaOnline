@@ -1,7 +1,7 @@
-<%= simple_form_for @assembly, url: url, method: method  do |p| %>
-  <%= p.input :title %>
-  <%= p.input :start_time, as: :datetime, html5: true %>
-  <%= p.input :finish_time, as: :datetime, html5: true %>
+<%= simple_form_for @assembly, url: url, method: method do |p| %>
+  <%= p.input :title, input_html: { style: "width: 30%; margin-left: 4px" } %>
+  <%= p.input :start_time, as: :datetime, html5: true, input_html: { style: "width: 30%" } %>
+  <%= p.input :finish_time, as: :datetime, html5: true, input_html: { style: "width: 30%" } %>
   <%= p.input :ata, as: :file, input_html: { accept:"application/pdf, application/vnd.ms-excel" } %>
   <% if p.object.ata.present? %>
     <%= p.object.ata.blob.filename.sanitized %>
@@ -9,5 +9,8 @@
   <% end %>
   <%= p.input :description, as: :rich_text_area %>
 
-  <%= p.submit controller.action_name == 'edit' ? 'Atualizar Assembléia' : 'Criar Assembléia' %>
+  <hr>
+
+  <%= p.submit controller.action_name == 'edit' ? 'Atualizar Assembléia' : 'Criar Assembléia', class:"btn btn-success" %>
+  <%= link_to 'Cancelar', admin_assemblies_path, class:"btn btn-danger" %>
 <% end %>

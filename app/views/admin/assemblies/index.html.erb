@@ -1,16 +1,25 @@
-<p id="notice"><%= notice %></p>
+<% flash.each do |key, value| %>
+  <div id="notice" class="alert <%= flash_class(key) %> alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= value %>
+  </div>
+<% end %>
 
-<h1>Assemblies</h1>
+<h1>
+  Assemblies
+  <%= link_to 'Novo(a)', new_admin_assembly_path, class:"btn btn-primary new" %>
+</h1>
 
-<table>
-  <thead>
+<hr>
+
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
     <tr>
       <th>#</th>
-      <th>Title</th>
-      <th>Start time</th>
-      <th>Finish time</th>
-      <th>State</th>
-      <!-- <th>Descrição</th> -->
+      <th>Título</th>
+      <th>Início</th>
+      <th>Encerramento</th>
+      <th>Situação</th>
       <th colspan="3">Ações</th>
     </tr>
   </thead>
@@ -22,22 +31,28 @@
         <td><%= assembly.title %></td>
         <td><%= assembly.start_time %></td>
         <td><%= assembly.finish_time %></td>
-        <td><%= assembly.state %></td>
-        <!-- <td><%= assembly.description %></td> -->
+
         <td>
-          <%if assembly.state == 'open'%>
-            <%= link_to 'Bloquear', set_not_state_path(assembly), method: :patch %>
-          <%else%>  
-            <%= link_to 'Liberar', set_state_path(assembly), method: :patch %>
+          <% if assembly.state == 'open' %>
+            <span class="badge badge-success">Ativa</span>
+          <% elsif assembly.state == 'close' %>
+            <span class="badge badge-danger">Finalizado</span>
+          <% else %>
+            <span class="badge badge-warning">Rascunho</span>
           <% end %>
         </td>
-        <td><%= link_to 'Edit', edit_admin_assembly_path(assembly) %></td>
-        <td><%= link_to 'Destroy', admin_assembly_path(assembly), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <td>
+          <%if assembly.state == 'open'%>
+            <%= link_to 'Fechar', set_not_state_path(assembly), method: :patch, class:"btn btn-outline-danger" %>
+          <%else%>  
+            <%= link_to 'Abrir', set_state_path(assembly), method: :patch, class:"btn btn-outline-success" %>
+          <% end %>
+          <%= link_to 'Editar', edit_admin_assembly_path(assembly), class:"btn btn-primary" %>
+          <%= link_to 'Deletar', admin_assembly_path(assembly), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+        </td>
+        
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Assembly', new_admin_assembly_path %>

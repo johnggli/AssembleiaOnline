@@ -21,5 +21,10 @@ table {
 
 .new {
   float: right;
+  margin-left: 5px;
+}
+
+#notice {
+  text-align: center;
 }
  

@@ -1,23 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% flash.each do |key, value| %>
+  <div id="notice" class="alert <%= flash_class(key) %> alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <%= value %>
+  </div>
+<% end %>
+
+<h1>
+  Assembly
+  <%= link_to 'Deletar', admin_assembly_path(@assembly), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger new" %>
+  <%= link_to 'Editar', edit_admin_assembly_path(@assembly), class:"btn btn-primary new" %>
+  <%= link_to 'Voltar', admin_assemblies_path, class:"btn btn-secondary new" %>
+  <%= link_to 'Novo(a)', new_admin_assembly_path, class:"btn btn-info new" %>
+</h1>
+
+<hr>
 
 <p>
-  <strong>Title:</strong>
+  <strong>Título:</strong>
   <%= @assembly.title %>
 </p>
 
 <p>
-  <strong>Start time:</strong>
+  <strong>Início:</strong>
   <%= @assembly.start_time %>
 </p>
 
 <p>
-  <strong>Finish time:</strong>
+  <strong>Encerramento:</strong>
   <%= @assembly.finish_time %>
 </p>
 
 <p>
   <strong>Situação:</strong>
-  <%= @assembly.state %>
+  <% if @assembly.state == 'open' %>
+    <span class="badge badge-success">Ativa</span>
+  <% elsif @assembly.state == 'close' %>
+    <span class="badge badge-danger">Finalizado</span>
+  <% else %>
+    <span class="badge badge-warning">Rascunho</span>
+  <% end %>
 </p>
 
 <p>
@@ -30,9 +51,6 @@
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descrição:</strong>
   <%= @assembly.description %>
 </p>
-
-<%= link_to 'Edit', edit_admin_assembly_path(@assembly) %> |
-<%= link_to 'Back', admin_assemblies_path %>

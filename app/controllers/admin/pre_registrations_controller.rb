@@ -29,7 +29,8 @@ class Admin::PreRegistrationsController < AdminController
 
     respond_to do |format|
     if @pre_registration.save
-      format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully created.' }
+      flash[:success] = "Pre registration was successfully created."
+      format.html { redirect_to admin_pre_registrations_path }
         format.json { render :show, status: :created, location: @pre_registration }
       else
         format.html { render :new }
@@ -43,7 +44,8 @@ class Admin::PreRegistrationsController < AdminController
   def update
     respond_to do |format|
       if @pre_registration.update(pre_registration_params)
-        format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully updated.' }
+        flash[:success] = "Pre registration was successfully updated."
+        format.html { redirect_to admin_pre_registrations_path }
         format.json { render :show, status: :ok, location: @pre_registration }
       else
         format.html { render :edit }
@@ -57,7 +59,8 @@ class Admin::PreRegistrationsController < AdminController
   def destroy
     @pre_registration.destroy
     respond_to do |format|
-      format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully destroyed.' }
+      flash[:success] = "Pre registration was successfully destroyed."
+      format.html { redirect_to admin_pre_registrations_path }
       format.json { head :no_content }
     end
   end

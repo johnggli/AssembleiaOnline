@@ -1,6 +1,5 @@
 class Admin::PreRegistrationsController < AdminController
   before_action :set_pre_registration, only: [:show, :edit, :update, :destroy]
-  before_action :set_apartments, only: [:new, :create, :edit, :update]
 
 
   # GET /pre_registrations
@@ -64,14 +63,6 @@ class Admin::PreRegistrationsController < AdminController
   end
 
   private
-    def set_apartments
-      @apartments = [101, 102, 103, 104] +
-                    [201, 202, 203, 204] +
-                    [301, 302, 303, 304] +
-                    [401, 402, 403, 404] +
-                    [501, 502, 503, 504]
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_pre_registration
       @pre_registration = PreRegistration.find(params[:id])

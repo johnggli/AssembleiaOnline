@@ -22,12 +22,12 @@
 
 <p>
   <strong>Início:</strong>
-  <%= @assembly.start_time %>
+  <%= l(@assembly.start_time, format: '%d/%m/%Y - %H:%M') %>
 </p>
 
 <p>
   <strong>Encerramento:</strong>
-  <%= @assembly.finish_time %>
+  <%= l(@assembly.finish_time, format: '%d/%m/%Y - %H:%M') %>
 </p>
 
 <p>

@@ -29,8 +29,8 @@
       <tr>
         <td><%= assembly.id %></td>
         <td><%= assembly.title %></td>
-        <td><%= assembly.start_time %></td>
-        <td><%= assembly.finish_time %></td>
+        <td><%= l(assembly.start_time, format: '%d/%m/%Y - %H:%M') %></td>
+        <td><%= l(assembly.finish_time, format: '%d/%m/%Y - %H:%M') %></td>
 
         <td>
           <% if assembly.state == 'open' %>

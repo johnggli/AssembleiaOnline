@@ -33,7 +33,7 @@
         <td><%= pre_registration.cpf %></td>
         <td><%= pre_registration.bloc %></td>
         <td><%= pre_registration.ap %></td>
-        <td><%= pre_registration.created_at %></td>
+        <td><%= l(pre_registration.created_at, format: '%d/%m/%Y - %H:%M') %></td>
         <td>
           <%= link_to 'Edit', edit_admin_pre_registration_path(pre_registration), class:"btn btn-primary" %>
           <%= link_to 'Destroy', admin_pre_registration_path(pre_registration), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>

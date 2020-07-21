@@ -1,35 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pre Registrations</h1>
+      <h1>Pre Registrations</h1>
+      <%= link_to 'New Pre Registration', new_admin_pre_registration_path, class:'btn btn-primary' %>      
 
-<table>
-  <thead>
+
+<table class='table'>
+  <thead class='thead-dark'>
     <tr>
-      <th>#</th>
-      <th>Cpf</th>
-      <th>Bloc</th>
-      <th>Ap</th>
-      <th>Criado em</th>
-      <th colspan="3"></th>
+      <th scope='col'>#</th>
+      <th scope='col'>Cpf</th>
+      <th scope='col'>Bloc</th>
+      <th scope='col'>Ap</th>
+      <th scope='col'>Criado em</th>
+      <th colspan="3" scope='col'></th>
     </tr>
   </thead>
 
   <tbody>
     <% @pre_registrations.each do |pre_registration| %>
-      <tr>
+      <tr scope='row'>
         <td><%= pre_registration.id %></td>
         <td><%= pre_registration.cpf %></td>
         <td><%= pre_registration.bloc %></td>
         <td><%= pre_registration.ap %></td>
         <td><%= pre_registration.created_at %></td>
-        <td><%= link_to 'Show', admin_pre_registration_path(pre_registration)%></td>
-        <td><%= link_to 'Edit', edit_admin_pre_registration_path(pre_registration) %></td>
-        <td><%= link_to 'Destroy', admin_pre_registration_path(pre_registration), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_pre_registration_path(pre_registration), class: 'btn btn-info'%></td>
+        <td><%= link_to 'Edit', edit_admin_pre_registration_path(pre_registration), class: 'btn btn-primary' %></td>
+        <td><%= link_to 'Destroy', admin_pre_registration_path(pre_registration), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Pre Registration', new_admin_pre_registration_path %>

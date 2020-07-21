@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Assembleia Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Assembly', admin_assemblies_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Topic', '#', class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'User', admin_users_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Pre Registration', admin_pre_registrations_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'Back to home', '#', class:'nav-link' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>

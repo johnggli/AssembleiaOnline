@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :user do
-    get 'home/index'
+    #get 'home/index'
+    resources :home
   end
   namespace :user do
     #get 'assemblies/index'
@@ -29,5 +30,4 @@ Rails.application.routes.draw do
 
   patch 'admin/assemblies/:id/set_state', to:'admin/assemblies#set_state', as: :set_state
   patch 'admin/assemblies/:id/set_not_state', to:'admin/assemblies#set_not_state', as: :set_not_state
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

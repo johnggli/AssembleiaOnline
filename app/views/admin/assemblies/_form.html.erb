@@ -5,12 +5,15 @@
   <%= p.input :ata, as: :file, input_html: { accept:"application/pdf, application/vnd.ms-excel" } %>
   <% if p.object.ata.present? %>
     <%= p.object.ata.blob.filename.sanitized %>
-    <%= p.input :checkbox_checked, label: "Remover ata", as: :boolean, input_html: { checked: false } %>
+    <%= p.input :checkbox_checked, label: t('remove_ata'), as: :boolean, input_html: { checked: false } %>
   <% end %>
   <%= p.input :description, as: :rich_text_area %>
 
   <hr>
 
-  <%= p.submit controller.action_name == 'edit' ? 'Atualizar Assembléia' : 'Criar Assembléia', class:"btn btn-success" %>
-  <%= link_to 'Cancelar', admin_assemblies_path, class:"btn btn-danger" %>
+  <%= p.submit controller.action_name == 'edit' ?
+    t('submit.update') + ' ' + Assembly.model_name.human :
+    t('submit.create') + ' ' + Assembly.model_name.human,
+    class:'btn btn-success' %>
+  <%= link_to t('links.cancel'), admin_assemblies_path, class:'btn btn-danger' %>
 <% end %>

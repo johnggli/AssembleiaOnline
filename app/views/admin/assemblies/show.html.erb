@@ -6,11 +6,11 @@
 <% end %>
 
 <h1>
-  Assembly
-  <%= link_to 'Deletar', admin_assembly_path(@assembly), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger new" %>
-  <%= link_to 'Editar', edit_admin_assembly_path(@assembly), class:"btn btn-primary new" %>
-  <%= link_to 'Voltar', admin_assemblies_path, class:"btn btn-secondary new" %>
-  <%= link_to 'Novo(a)', new_admin_assembly_path, class:"btn btn-info new" %>
+  <%= Assembly.model_name.human %>
+  <%= link_to t('links.delete'), admin_assembly_path(@assembly), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger new" %>
+  <%= link_to t('links.edit'), edit_admin_assembly_path(@assembly), class:"btn btn-primary new" %>
+  <%= link_to t('links.back'), admin_assemblies_path, class:"btn btn-secondary new" %>
+  <%= link_to t('links.new'), new_admin_assembly_path, class:"btn btn-info new" %>
 </h1>
 
 <hr>

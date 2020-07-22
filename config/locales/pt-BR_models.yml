@@ -2,8 +2,8 @@
   activerecord:
     models:
       pre_registration:
-        one: Pré Registro
-        other: Pré Registros
+        one: Pré-Registro
+        other: Pré-Registros
       user:
         one: Usuário
         other: Usuários

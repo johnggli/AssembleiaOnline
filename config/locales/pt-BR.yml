@@ -1,2 +1,24 @@
 pt-BR:
-  hello: "Hello world"
+  actions: Ações
+  "yes": Sim
+  "no": Não
+  remove_ata: Remover Ata
+  links:
+    new: Novo(a)
+    edit: Editar
+    delete: Deletar
+    block: Bloquear
+    release: Liberar
+    open: Abrir
+    close: Fechar
+    cancel: Cancelar
+    back: Voltar
+  state:
+    open: Ativa
+    close: Finalizado
+    sketch: Rascunho
+  submit:
+    create: Criar
+    update: Atualizar
+  select:
+    cpf: Selecione um CPF

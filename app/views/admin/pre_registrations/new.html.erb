@@ -1,5 +1,5 @@
-<div class="container">
-    <h1>New Pre Registration</h1>
+<h1><%= t('new') + ' ' + PreRegistration.model_name.human %></h1>
 
-    <%= render 'form', url: admin_pre_registrations_path, method: :post %>
-</div>
+<hr>
+
+<%= render 'form', url: admin_pre_registrations_path, method: :post %>

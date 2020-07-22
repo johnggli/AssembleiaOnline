@@ -6,11 +6,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#"><%= t('links.home') %>
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
           <li class="nav-item">
             <%= link_to Assembly.model_name.human(count: 2), admin_assemblies_path, class:'nav-link' %>
           </li>

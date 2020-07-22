@@ -29,7 +29,7 @@ class Admin::PreRegistrationsController < AdminController
 
     respond_to do |format|
     if @pre_registration.save
-      flash[:success] = "Pre registration was successfully created."
+      flash[:success] = PreRegistration.model_name.human + ' ' + t('success.create')
       format.html { redirect_to admin_pre_registrations_path }
         format.json { render :show, status: :created, location: @pre_registration }
       else
@@ -44,7 +44,7 @@ class Admin::PreRegistrationsController < AdminController
   def update
     respond_to do |format|
       if @pre_registration.update(pre_registration_params)
-        flash[:success] = "Pre registration was successfully updated."
+        flash[:success] = PreRegistration.model_name.human + ' ' + t('success.update')
         format.html { redirect_to admin_pre_registrations_path }
         format.json { render :show, status: :ok, location: @pre_registration }
       else
@@ -59,7 +59,7 @@ class Admin::PreRegistrationsController < AdminController
   def destroy
     @pre_registration.destroy
     respond_to do |format|
-      flash[:success] = "Pre registration was successfully destroyed."
+      flash[:success] = PreRegistration.model_name.human + ' ' + t('success.delete')
       format.html { redirect_to admin_pre_registrations_path }
       format.json { head :no_content }
     end

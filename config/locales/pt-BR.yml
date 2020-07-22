@@ -22,3 +22,7 @@ pt-BR:
     update: Atualizar
   select:
     cpf: Selecione um CPF
+  success:
+    create: foi criado com sucesso!
+    update: foi atualizado com sucesso!
+    delete: foi deletado com sucesso!

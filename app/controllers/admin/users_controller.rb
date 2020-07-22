@@ -1,5 +1,4 @@
 class Admin::UsersController < AdminController
-
   before_action :set_user, only: [:edit, :update, :destroy, :set_paid, :set_not_paid]
 
   def index
@@ -15,7 +14,7 @@ class Admin::UsersController < AdminController
     @user = User.create_with_password(user_params)
     respond_to do |format|
       if @user.save
-        flash[:success] = "User was successfully created."
+        flash[:success] = User.model_name.human + ' ' + t('success.create')
         format.html { redirect_to admin_users_path }
         format.json { render :show, status: :created, location: @user }
         else
@@ -31,7 +30,7 @@ class Admin::UsersController < AdminController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        flash[:success] = "User was successfully update."
+        flash[:success] = User.model_name.human + ' ' + t('success.update')
         format.html { redirect_to admin_users_path }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -44,7 +43,7 @@ class Admin::UsersController < AdminController
   def destroy
     @user.destroy
     respond_to do |format|
-      flash[:success] = "User was successfully destroy."
+      flash[:success] = User.model_name.human + ' ' + t('success.delete')
       format.html { redirect_to admin_users_path }
       format.json { head :no_content }
     end

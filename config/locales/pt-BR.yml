@@ -27,6 +27,7 @@ pt-BR:
     cpf: Selecione um CPF
     bloc: Selecione um Bloco
     ap: Selecione um Apartamento
+    assembly: Selecione uma Assembléia
   success:
     create: foi criado com sucesso!
     update: foi atualizado com sucesso!

@@ -20,5 +20,10 @@
 class Topic < ApplicationRecord
   belongs_to :assembly
 
+  has_rich_text :description
+
   has_many :options
+
+  # validates :title, presence: true
+  #validates :description, presence: true
 end

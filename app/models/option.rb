@@ -18,6 +18,8 @@
 #
 class Option < ApplicationRecord
   belongs_to :topic
+
+  validates :description, presence: true, uniqueness: true
   
   has_many :users, :through => :votes 
 end

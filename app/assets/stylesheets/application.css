@@ -27,4 +27,9 @@ table {
 #notice {
   text-align: center;
 }
+
+.btn_option {
+  width: 50%;
+  margin-bottom: 10px;
+}
  

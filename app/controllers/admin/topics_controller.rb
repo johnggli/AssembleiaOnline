@@ -72,6 +72,6 @@ class Admin::TopicsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def topic_params
-      params.require(:topic).permit(:title, :description, :assembly_id)
+      params.require(:topic).permit(:title, :description, :assembly_id, options_attributes: [:id, :description, :_destroy])
     end
 end

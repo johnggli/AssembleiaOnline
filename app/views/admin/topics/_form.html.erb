@@ -5,6 +5,18 @@
 
   <hr>
 
+  <div id="options">
+    <%= p.simple_fields_for :options do |option| %>
+      <%= render partial: 'admin/topics/option_fields', locals: { f: option } %>
+    <% end %>
+
+    <div class="links">
+      <%= link_to_add_association 'Nova opção', p, :options %>
+    </div>
+  </div>
+
+  <hr>
+
   <%= p.submit controller.action_name == 'edit' ?
     t('submit.update') + ' ' + Topic.model_name.human :
     t('submit.create') + ' ' + Topic.model_name.human,

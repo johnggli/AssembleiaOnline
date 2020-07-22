@@ -5,7 +5,7 @@
 
   <hr>
 
-  <h3>Opções</h3>
+  <h3><%= t('options') %></h3>
   
   <hr>
 
@@ -14,7 +14,7 @@
       <%= render partial: 'admin/topics/option_fields', locals: { f: option } %>
     <% end %>
     <div class="links">
-        <%= link_to_add_association 'Nova opção', p, :options, class:'btn btn-info btn_option' %>
+        <%= link_to_add_association t('new_option'), p, :options, class:'btn btn-info btn_option' %>
     </div>
   </div>
 

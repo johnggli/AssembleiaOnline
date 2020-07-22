@@ -24,7 +24,7 @@
         <td><%= topic.assembly.title %></td>
         <td><%= "0" %></td>
         <td>
-          <%= link_to 'relatorio', '#', class:"btn btn-info" %>
+          <%= link_to t('links.report'), '#', class:"btn btn-info" %>
           <%= link_to t('links.edit'), edit_admin_topic_path(topic), class:"btn btn-primary" %>
           <%= link_to t('links.delete'), admin_topic_path(topic), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger" %>
         </td>

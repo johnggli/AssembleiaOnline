@@ -4,10 +4,10 @@
   </div>
   <div class='row'>
     <div class='col-md-3'>
-      <%= p.input :bloc, as: :select, collection: PreRegistration::BLOCK, include_blank: 'Selecione um Bloco...' %>
+      <%= p.input :bloc, as: :select, collection: PreRegistration::BLOCK, include_blank: t('select.bloc') %>
     </div>
     <div class='col-md-3'>
-      <%= p.input :ap, as: :select, collection: PreRegistration::AP, include_blank: 'Selecione um Apartamento...' %>
+      <%= p.input :ap, as: :select, collection: PreRegistration::AP, include_blank: t('select.ap') %>
     </div>
   </div>
 

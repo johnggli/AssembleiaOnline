@@ -7,7 +7,7 @@
     <%= p.object.ata.blob.filename.sanitized %>
     <%= p.input :checkbox_checked, label: t('remove_ata'), as: :boolean, input_html: { checked: false } %>
   <% end %>
-  <%= p.input :description, as: :rich_text_area %>
+  <%= p.input :description, as: :rich_text_area, input_html: { style: "height: auto;" } %>
 
   <hr>
 

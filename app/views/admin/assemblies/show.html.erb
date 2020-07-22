@@ -7,7 +7,7 @@
 
 <h1>
   <%= Assembly.model_name.human %>
-  <%= link_to t('links.delete'), admin_assembly_path(@assembly), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger new" %>
+  <%= link_to t('links.delete'), admin_assembly_path(@assembly), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger new" %>
   <%= link_to t('links.edit'), edit_admin_assembly_path(@assembly), class:"btn btn-primary new" %>
   <%= link_to t('links.back'), admin_assemblies_path, class:"btn btn-secondary new" %>
   <%= link_to t('links.new'), new_admin_assembly_path, class:"btn btn-info new" %>
@@ -16,42 +16,42 @@
 <hr>
 
 <p>
-  <strong>Título:</strong>
+  <strong><%= Assembly.human_attribute_name(:title) %></strong>
   <%= @assembly.title %>
 </p>
 
 <p>
-  <strong>Início:</strong>
+  <strong><%= Assembly.human_attribute_name(:start_time) %></strong>
   <%= l(@assembly.start_time, format: '%d/%m/%Y - %H:%M') %>
 </p>
 
 <p>
-  <strong>Encerramento:</strong>
+  <strong><%= Assembly.human_attribute_name(:finish_time) %></strong>
   <%= l(@assembly.finish_time, format: '%d/%m/%Y - %H:%M') %>
 </p>
 
 <p>
-  <strong>Situação:</strong>
+  <strong><%= Assembly.human_attribute_name(:state) %></strong>
   <% if @assembly.state == 'open' %>
-    <span class="badge badge-success">Ativa</span>
+    <span class="badge badge-success"><%= t('state.open') %></span>
   <% elsif @assembly.state == 'close' %>
-    <span class="badge badge-danger">Finalizado</span>
+    <span class="badge badge-danger"><%= t('state.close') %></span>
   <% else %>
-    <span class="badge badge-warning">Rascunho</span>
+    <span class="badge badge-warning"><%= t('state.sketch') %></span>
   <% end %>
 </p>
 
 <p>
-  <strong>Ata:</strong>
+  <strong><%= Assembly.human_attribute_name(:ata) %></strong>
   <% if @assembly.ata.present? %>
     <%= link_to @assembly.ata.blob.filename.sanitized, rails_blob_path(@assembly.ata, disposition: 'attachment') %>
     <%#= @assembly.ata.blob.filename.sanitized %>
   <% else %>
-    Sem ata
+    <%= t('no_ata') %>
   <% end %>
 </p>
 
 <p>
-  <strong>Descrição:</strong>
+  <strong><%= Assembly.human_attribute_name(:description) %></strong>
   <%= @assembly.description %>
 </p>

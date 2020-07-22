@@ -33,7 +33,7 @@
         title: Título
         start_time: Início
         finish_time: Encerramento
-        status: Situação
+        state: Situação
         description: Descrição
       topic:
         title: Título

@@ -2,7 +2,9 @@ pt-BR:
   actions: Ações
   "yes": Sim
   "no": Não
+  no_ata: Sem ata
   remove_ata: Remover Ata
+  confirm: 'Você tem certeza?'
   links:
     new: Novo(a)
     edit: Editar
@@ -22,6 +24,8 @@ pt-BR:
     update: Atualizar
   select:
     cpf: Selecione um CPF
+    bloc: Selecione um Bloco
+    ap: Selecione um Apartamento
   success:
     create: foi criado com sucesso!
     update: foi atualizado com sucesso!

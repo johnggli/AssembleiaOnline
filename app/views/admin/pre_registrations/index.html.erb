@@ -34,7 +34,7 @@
         <td><%= l(pre_registration.created_at, format: '%d/%m/%Y - %H:%M') %></td>
         <td>
           <%= link_to t('links.edit'), edit_admin_pre_registration_path(pre_registration), class:"btn btn-primary" %>
-          <%= link_to t('links.delete'), admin_pre_registration_path(pre_registration), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>
+          <%= link_to t('links.delete'), admin_pre_registration_path(pre_registration), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger" %>
         </td>
       </tr>
     <% end %>

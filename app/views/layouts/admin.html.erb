@@ -5,11 +5,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application'  %>
+    <%= stylesheet_link_tag 'small-business'  %>
+    <%= javascript_pack_tag 'application'  %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/admin_nav" %>
+    <div class="container">
+      <%= render 'layouts/notice' %>
+      <%= yield %>  
+    </div>
+
+    <footer class="py-5">
+      <div class="container">
+        <p class="m-0 text-center">Copyright &copy; CavernaLabs 2020</p>
+      </div>
+    </footer>
   </body>
 </html>

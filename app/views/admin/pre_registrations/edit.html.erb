@@ -1,6 +1,5 @@
-<h1>Editing Pre Registration</h1>
+<h1><%= t('links.edit') + ' ' + PreRegistration.model_name.human %></h1>
+
+<hr>
 
 <%= render 'form', url: admin_pre_registration_path, method: :put %>
-
-<%= link_to 'Show', admin_pre_registration_path %> |
-<%= link_to 'Back', admin_pre_registrations_path %>

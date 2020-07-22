@@ -28,7 +28,8 @@ class Admin::AssembliesController < AdminController
 
     respond_to do |format|
       if @assembly.save
-        format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully created.' }
+        flash[:success] = Assembly.model_name.human + ' ' + t('success.create')
+        format.html { redirect_to admin_assembly_path(@assembly) }
         format.json { render :show, status: :created, location: @assembly }
       else
         format.html { render :new }
@@ -45,7 +46,8 @@ class Admin::AssembliesController < AdminController
     end
     respond_to do |format|
       if @assembly.update(assembly_params)
-        format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully updated.' }
+        flash[:success] = Assembly.model_name.human + ' ' + t('success.update')
+        format.html { redirect_to admin_assembly_path(@assembly) }
         format.json { render :show, status: :ok, location: @assembly }
       else
         format.html { render :edit }
@@ -59,7 +61,8 @@ class Admin::AssembliesController < AdminController
   def destroy
     @assembly.destroy
     respond_to do |format|
-      format.html { redirect_to admin_assemblies_path, notice: 'Assembly was successfully destroyed.' }
+      flash[:success] = Assembly.model_name.human + ' ' + t('success.delete')
+      format.html { redirect_to admin_assemblies_path }
       format.json { head :no_content }
     end
   end

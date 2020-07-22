@@ -1,18 +1,21 @@
-<p id="notice"><%= notice %></p>
+<h1>
+  <%= User.model_name.human(count: User.all.to_a.length()) %>
+  <%= link_to t('links.new'), new_admin_user_path, class:"btn btn-primary new" %>
+</h1>
 
-<h1>Usuarios</h1>
+<hr>
 
-<table>
-  <thead>
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
     <tr>
       <th>#</th>
-      <th>Nome Completo</th>
-      <th>Cpf</th>
-      <th>Bloc</th>
-      <th>Ap</th>
-      <th>Permissao</th>
-      <th>Adimplente</th>
-      <th colspan="3"></th>
+      <th><%= User.human_attribute_name(:user_name) %></th>
+      <th><%= PreRegistration.human_attribute_name(:cpf) %></th>
+      <th><%= PreRegistration.human_attribute_name(:bloc) %></th>
+      <th><%= PreRegistration.human_attribute_name(:ap) %></th>
+      <th><%= User.human_attribute_name(:role) %></th>
+      <th><%= User.human_attribute_name(:paid) %></th>
+      <th colspan="3"><%= t('actions') %></th>
     </tr>
   </thead>
 
@@ -25,21 +28,22 @@
         <td><%= user.pre_registration.bloc %></td>
         <td><%= user.pre_registration.ap %></td>
         <td><%= user.role %></td>
-        <td><%= user.paid %></td>
+        <td>
+          <% if (user.paid) ? @class_name = 'badge badge-success' : @class_name = 'badge badge-danger'%><% end %>
+          <span class="<%= @class_name %>">
+            <%= user.paid ? t('yes') : t('no') %>
+          </span>
+        </td>
         <td>
           <%if user.paid?%>
-            <%= link_to 'Bloquear', set_not_paid_path(user), method: :patch %>
+            <%= link_to t('links.block'), set_not_paid_path(user), method: :patch, class:"btn btn-outline-danger" %>
           <%else%>  
-            <%= link_to 'Liberar', set_paid_path(user), method: :patch %>
-          <% end -%>
+            <%= link_to t('links.release'), set_paid_path(user), method: :patch, class:"btn btn-outline-success" %>
+          <% end %>
+          <%= link_to t('links.edit'), edit_admin_user_path(user), class:'btn btn-primary'%>
+          <%= link_to t('links.delete'), admin_user_path(user), method: :delete, data: { confirm: t('confirm') }, class:'btn btn-danger' %>
         </td>
-        <td><%= link_to 'Edit', edit_admin_user_path(user) %></td>
-        <td><%= link_to 'Destroy', admin_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New User', new_admin_user_path %>

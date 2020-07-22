@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-PreRegistration.create!(
+pre_registration = PreRegistration.create!(
     cpf: '111.111.111-11',
     bloc: 1,
     ap: 101
@@ -19,5 +19,5 @@ User.create!(
     user_name: "John Joao",
     role: 0,
     paid: true,
-    pre_registration_id: 2
+    pre_registration_id: pre_registration.id
 )

@@ -1,6 +1,5 @@
 class Admin::PreRegistrationsController < AdminController
   before_action :set_pre_registration, only: [:show, :edit, :update, :destroy]
-  before_action :set_apartments, only: [:new, :create, :edit, :update]
 
 
   # GET /pre_registrations
@@ -30,7 +29,8 @@ class Admin::PreRegistrationsController < AdminController
 
     respond_to do |format|
     if @pre_registration.save
-      format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully created.' }
+      flash[:success] = PreRegistration.model_name.human + ' ' + t('success.create')
+      format.html { redirect_to admin_pre_registrations_path }
         format.json { render :show, status: :created, location: @pre_registration }
       else
         format.html { render :new }
@@ -44,7 +44,8 @@ class Admin::PreRegistrationsController < AdminController
   def update
     respond_to do |format|
       if @pre_registration.update(pre_registration_params)
-        format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully updated.' }
+        flash[:success] = PreRegistration.model_name.human + ' ' + t('success.update')
+        format.html { redirect_to admin_pre_registrations_path }
         format.json { render :show, status: :ok, location: @pre_registration }
       else
         format.html { render :edit }
@@ -58,20 +59,13 @@ class Admin::PreRegistrationsController < AdminController
   def destroy
     @pre_registration.destroy
     respond_to do |format|
-      format.html { redirect_to admin_pre_registrations_path, notice: 'Pre registration was successfully destroyed.' }
+      flash[:success] = PreRegistration.model_name.human + ' ' + t('success.delete')
+      format.html { redirect_to admin_pre_registrations_path }
       format.json { head :no_content }
     end
   end
 
   private
-    def set_apartments
-      @apartments = [101, 102, 103, 104] +
-                    [201, 202, 203, 204] +
-                    [301, 302, 303, 304] +
-                    [401, 402, 403, 404] +
-                    [501, 502, 503, 504]
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_pre_registration
       @pre_registration = PreRegistration.find(params[:id])

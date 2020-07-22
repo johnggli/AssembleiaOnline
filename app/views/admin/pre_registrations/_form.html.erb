@@ -1,6 +1,23 @@
 <%= simple_form_for @pre_registration, url: url, method: method  do |p| %>
-  <%= p.input :cpf %>
-  <%= p.input :bloc, collection: 1..24, include_blank: 'Selecione um Bloco...' %>
-  <%= p.input :ap, collection: @apartments, include_blank: 'Selecione um Apartamento...' %>
-  <%= p.submit controller.action_name == 'edit' ? 'Atualizar Pré-Registro' : 'Criar Pré-Registro' %>
+  <div class='row col-md-6'>
+    <%= p.input :cpf %>
+  </div>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= p.input :bloc, as: :select, collection: PreRegistration::BLOCK, include_blank: t('select.bloc') %>
+    </div>
+    <div class='col-md-3'>
+      <%= p.input :ap, as: :select, collection: PreRegistration::AP, include_blank: t('select.ap') %>
+    </div>
+  </div>
+
+  <hr>
+
+  <div>
+    <%= p.submit controller.action_name == 'edit' ?
+      t('submit.update') + ' ' + PreRegistration.model_name.human :
+      t('submit.create') + ' ' + PreRegistration.model_name.human,
+      class:'btn btn-success' %>
+    <%= link_to t('links.cancel'), admin_pre_registrations_path, class:'btn btn-danger' %>
+  </div>
 <% end %>

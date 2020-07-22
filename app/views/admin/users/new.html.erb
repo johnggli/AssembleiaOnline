@@ -1,5 +1,5 @@
-<h1>New User</h1>
+<h1><%= t('links.new') + ' ' + User.model_name.human %></h1>
+
+<hr>
 
 <%= render 'form', url: admin_users_path, method: :post %>
-
-<%= link_to 'Cancelar', admin_users_path %>

@@ -1,8 +1,26 @@
 <%= simple_form_for @user, url: url, method: method  do |p| %>
-    <%= p.association :pre_registration, label: "Pré-Registro", label_method: :cpf, value_method: :id, include_blank: "Selecione um CPF" %>
-    <%= p.input :user_name %>
-    <%= p.input :email %>
+  <div class="row col-md-4">
+    <%= p.association :pre_registration, label: PreRegistration.model_name.human, label_method: :cpf, value_method: :id, include_blank: t('select.cpf') %>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <%= p.input :user_name %>
+    </div>
+    <div class="col-md-3">
+      <%= p.input :email %>
+    </div>
+  </div>
+  <div class="row col-md-4">
     <%= p.input :role, collection: User.roles.keys.map {|role| [role.titleize,role]}, include_blank: false %>
+  </div>
 
-    <%= p.submit controller.action_name == 'edit' ? 'Atualizar Usuário' : 'Criar Usuário'%>
-  <% end %>
+  <hr>
+
+  <div>
+    <%= p.submit controller.action_name == 'edit' ?
+      t('submit.update') + ' ' + User.model_name.human :
+      t('submit.create') + ' ' + User.model_name.human,
+      class:'btn btn-success' %>
+    <%= link_to t('links.cancel'), admin_users_path, class:'btn btn-danger' %>
+  </div>
+<% end %>

@@ -44,7 +44,8 @@
 <p>
   <strong>Ata:</strong>
   <% if @assembly.ata.present? %>
-    <%= @assembly.ata.blob.filename.sanitized %>
+    <%= link_to @assembly.ata.blob.filename.sanitized, rails_blob_path(@assembly.ata, disposition: 'attachment') %>
+    <%#= @assembly.ata.blob.filename.sanitized %>
   <% else %>
     Sem ata
   <% end %>

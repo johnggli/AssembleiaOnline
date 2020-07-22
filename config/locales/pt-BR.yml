@@ -6,6 +6,7 @@ pt-BR:
   remove_ata: Remover Ata
   confirm: 'Você tem certeza?'
   links:
+    home: Início
     new: Novo(a)
     edit: Editar
     delete: Deletar

@@ -6,32 +6,32 @@
   <div class="card-body">
     <div class="card-columns">
       <% @assemblies.each do |assembly| %>
-          <div class="card">
-            <div class="card-header text-center">
-              <h4><%= "##{assembly.id} - #{assembly.title}" %></h4>
-            </div>
-            <div class="card-body text-center" style="font-size:24px">
-                <strong> Situação: 
-                    <% if assembly.state == 'open' %>
-                        <span class="badge badge-success"><%= t('state.open') %></span>
-                    <% elsif assembly.state == 'close' %>
-                        <span class="badge badge-danger"><%= t('state.close') %></span>
-                    <% else %>
-                        <span class="badge badge-warning"><%= t('state.sketch') %></span>
-                    <% end %>
-                </strong><br>
-                <p>
-                  #topicos de votação <br>
-                  <%if user_signed_in?%>
-                    Dia: <strong> <%= assembly.start_time %> </strong> <br>
-                    Encerramento: <strong> <%= assembly.finish_time %> </strong>
-                  <% else %>
-                    Dia: <strong> Apenas para moradores </strong> <br>
-                    Encerramento: <strong> Apenas para moradores </strong>
-                  <% end %>
-                </p>
-            </div>
+        <div class="card">
+          <div class="card-header text-center">
+            <h4><%= "##{assembly.id} - #{assembly.title}" %></h4>
           </div>
+          <div class="card-body text-center" style="font-size:24px">
+            <strong> Situação: 
+              <% if assembly.state == 'open' %>
+                <span class="badge badge-success"><%= t('state.open') %></span>
+              <% elsif assembly.state == 'close' %>
+                <span class="badge badge-danger"><%= t('state.close') %></span>
+              <% else %>
+                <span class="badge badge-warning"><%= t('state.sketch') %></span>
+              <% end %>
+            </strong><br>
+            <p>
+              #topicos de votação <br>
+              <%if user_signed_in? %>
+                Dia: <strong> <%= assembly.start_time %> </strong> <br>
+                Encerramento: <strong> <%= assembly.finish_time %> </strong>
+              <% else %>
+                Dia: <strong> Apenas para moradores </strong> <br>
+                Encerramento: <strong> Apenas para moradores </strong>
+              <% end %>
+            </p>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

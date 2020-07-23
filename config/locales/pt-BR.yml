@@ -46,3 +46,6 @@ pt-BR:
     update: foi atualizado com sucesso!
     delete: foi deletado com sucesso!
   message: O histórico de todas as Assembléias são mantidos no sistema caso algum morador deseje realizar alguma consulta.
+  date: Data
+  to: Até
+  vote_history: Histórico de votos

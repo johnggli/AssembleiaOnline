@@ -12,7 +12,7 @@
 
 <p class="text-center">
   <% if @assembly.ata.present? %>
-    <%= link_to 'Download da ATA', rails_blob_path(@assembly.ata, disposition: 'attachment'), class:"btn btn-dark" %>
+    <%= link_to t('links.ata_download'), rails_blob_path(@assembly.ata, disposition: 'attachment'), class:"btn btn-dark" %>
   <%# else %>
     <%#= t('no_ata') %>
   <% end %>

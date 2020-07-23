@@ -29,6 +29,7 @@ pt-BR:
     back: Voltar
     report: Relatório
     details: Detalhes
+    ata_download: Download da ATA
   state:
     open: Ativa
     close: Finalizado

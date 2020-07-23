@@ -6,11 +6,14 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'small-business'  %>
     <%= javascript_pack_tag 'application' %>
   </head>
 
   <body>
     <%= render "layouts/user_nav" %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

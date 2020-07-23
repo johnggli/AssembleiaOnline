@@ -1,6 +1,5 @@
-<h1>Editing Topic</h1>
+<h1><%= t('links.edit') + ' ' + Topic.model_name.human %></h1>
 
-<%= render 'form', topic: @topic %>
+<hr>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', topics_path %>
+<%= render 'form', url: admin_topic_path, method: :put %>

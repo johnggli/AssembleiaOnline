@@ -10,7 +10,7 @@
             <%= link_to Assembly.model_name.human(count: 2), admin_assemblies_path, class:'nav-link' %>
           </li>
           <li class="nav-item <%= 'active' if current_page? controller: :topics %>">
-            <%= link_to Topic.model_name.human(count: 2), '#', class:'nav-link' %>
+            <%= link_to Topic.model_name.human(count: 2), admin_topics_path, class:'nav-link' %>
           </li>
           <li class="nav-item <%= 'active' if current_page? controller: :users %>">
             <%= link_to User.model_name.human(count: 2), admin_users_path, class:'nav-link' %>

@@ -1,31 +1,34 @@
-<p id="notice"><%= notice %></p>
+<h1>
+  <%= Topic.model_name.human(count: Topic.all.to_a.length()) %>
+  <%= link_to t('links.new'), new_admin_topic_path, class:"btn btn-primary new" %>
+</h1>
 
-<h1>Topics</h1>
+<hr>
 
-<table>
-  <thead>
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Assembly</th>
-      <th colspan="3"></th>
+      <th>#</th>
+      <th><%= Topic.human_attribute_name(:title) %></th>
+      <th><%= Assembly.model_name.human %></th>
+      <th><%= Vote.model_name.human(count: 2) %></th>
+      <th colspan="3"><%= t('actions') %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @topics.each do |topic| %>
       <tr>
+        <td><%= topic.id %></td>
         <td><%= topic.title %></td>
-        <td><%= topic.description %></td>
-        <td><%= topic.assembly_id %></td>
-        <td><%= link_to 'Show', topic %></td>
-        <td><%= link_to 'Edit', edit_topic_path(topic) %></td>
-        <td><%= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= topic.assembly.title %></td>
+        <td><%= "NaN" %></td>
+        <td>
+          <%= link_to t('links.report'), '#', class:"btn btn-info" %>
+          <%= link_to t('links.edit'), edit_admin_topic_path(topic), class:"btn btn-primary" %>
+          <%= link_to t('links.delete'), admin_topic_path(topic), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Topic', new_topic_path %>

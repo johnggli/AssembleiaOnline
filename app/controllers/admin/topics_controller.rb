@@ -28,7 +28,8 @@ class Admin::TopicsController < AdminController
 
     respond_to do |format|
       if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
+        flash[:success] = Topic.model_name.human + ' ' + t('success.create')
+        format.html { redirect_to admin_topics_path }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -42,7 +43,8 @@ class Admin::TopicsController < AdminController
   def update
     respond_to do |format|
       if @topic.update(topic_params)
-        format.html { redirect_to @topic, notice: 'Topic was successfully updated.' }
+        flash[:success] = Topic.model_name.human + ' ' + t('success.update')
+        format.html { redirect_to admin_topics_path }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }
@@ -56,7 +58,8 @@ class Admin::TopicsController < AdminController
   def destroy
     @topic.destroy
     respond_to do |format|
-      format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
+      flash[:success] = Topic.model_name.human + ' ' + t('success.delete')
+      format.html { redirect_to admin_topics_path }
       format.json { head :no_content }
     end
   end
@@ -69,6 +72,6 @@ class Admin::TopicsController < AdminController
 
     # Only allow a list of trusted parameters through.
     def topic_params
-      params.require(:topic).permit(:title, :description, :assembly_id)
+      params.require(:topic).permit(:title, :description, :assembly_id, options_attributes: [:id, :description, :_destroy])
     end
 end

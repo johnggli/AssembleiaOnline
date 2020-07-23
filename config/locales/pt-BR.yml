@@ -1,5 +1,9 @@
 pt-BR:
   actions: Ações
+  options: Opções
+  new_option: Nova opção
+  remove_option: Remover opção
+  title: Título
   "yes": Sim
   "no": Não
   no_ata: Sem ata
@@ -16,6 +20,7 @@ pt-BR:
     close: Fechar
     cancel: Cancelar
     back: Voltar
+    report: Relatório
   state:
     open: Ativa
     close: Finalizado
@@ -27,6 +32,7 @@ pt-BR:
     cpf: Selecione um CPF
     bloc: Selecione um Bloco
     ap: Selecione um Apartamento
+    assembly: Selecione uma Assembléia
   success:
     create: foi criado com sucesso!
     update: foi atualizado com sucesso!

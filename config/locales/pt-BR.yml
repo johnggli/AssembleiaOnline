@@ -28,6 +28,8 @@ pt-BR:
     cancel: Cancelar
     back: Voltar
     report: Relatório
+    details: Detalhes
+    ata_download: Download da ATA
   state:
     open: Ativa
     close: Finalizado
@@ -45,3 +47,7 @@ pt-BR:
     update: foi atualizado com sucesso!
     delete: foi deletado com sucesso!
   message: O histórico de todas as Assembléias são mantidos no sistema caso algum morador deseje realizar alguma consulta.
+  date: Data
+  to: Até
+  of: de
+  vote_history: Histórico de votos

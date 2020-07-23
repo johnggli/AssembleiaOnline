@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: #004466">
   <div class="container">
     <a class="navbar-brand" href="#"><%= Assembly.model_name.human %></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,17 +6,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            <%= t('links.home') %>
-            <span class="sr-only">(current)</span>
-          </a>
+        <li class="nav-item <%= 'active' if current_page? controller: :home %>">
+          <%= link_to t('links.home'), user_home_index_path, class:'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to Assembly.model_name.human(count: 2), admin_assemblies_path, class:'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to t('login'), '#', class:'nav-link btn btn-success' %>
+        <li class="nav-item <%= 'active' if current_page? controller: :assemblies %>">
+          <%= link_to Assembly.model_name.human(count: 2), user_assemblies_path, class:'nav-link' %>
         </li>
       </ul>
     </div>

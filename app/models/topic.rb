@@ -18,6 +18,8 @@
 #  fk_rails_...  (assembly_id => assemblies.id)
 #
 class Topic < ApplicationRecord
+  default_scope { order(id: :desc) }
+
   belongs_to :assembly, inverse_of: :topics
 
   has_rich_text :description
@@ -26,6 +28,4 @@ class Topic < ApplicationRecord
 
   accepts_nested_attributes_for :options, reject_if: :all_blank, allow_destroy: true
 
-  # validates :title, presence: true
-  #validates :description, presence: true
 end

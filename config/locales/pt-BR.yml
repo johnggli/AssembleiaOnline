@@ -28,6 +28,7 @@ pt-BR:
     cancel: Cancelar
     back: Voltar
     report: Relatório
+    details: Detalhes
   state:
     open: Ativa
     close: Finalizado

@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body text-center">
-    <h1><%= " Ultimas #{Assembly.model_name.human(count: 2)}" %></h1>
-    <p>O histórico de todas as Assembléias são mantidos no sistema caso algum morador deseje realizar alguma consulta.</p>
+    <h1><%= "#{t('latest')} #{Assembly.model_name.human(count: 2)}" %></h1>
+    <p><%= t('message') %></p>
   </div>
   <div class="card-body">
     <div class="card-columns">
@@ -11,7 +11,7 @@
             <h4><%= "##{assembly.id} - #{assembly.title}" %></h4>
           </div>
           <div class="card-body text-center" style="font-size:24px">
-            <strong> Situação: 
+            <strong><%= t('situation') %>
               <% if assembly.state == 'open' %>
                 <span class="badge badge-success"><%= t('state.open') %></span>
               <% elsif assembly.state == 'close' %>
@@ -21,13 +21,13 @@
               <% end %>
             </strong><br>
             <p>
-              #topicos de votação <br>
+              NaN <%= t('voting_topics') %><br>
               <%if user_signed_in? %>
-                Dia: <strong> <%= assembly.start_time %> </strong> <br>
-                Encerramento: <strong> <%= assembly.finish_time %> </strong>
+                <%= t('day') %> <strong> <%= assembly.start_time %> </strong><br>
+                <%= t('closure') %> <strong> <%= assembly.finish_time %> </strong>
               <% else %>
-                Dia: <strong> Apenas para moradores </strong> <br>
-                Encerramento: <strong> Apenas para moradores </strong>
+                <%= t('day') %> <strong><%= t('users_only') %></strong><br>
+                <%= t('closure') %> <strong><%= t('users_only') %></strong>
               <% end %>
             </p>
           </div>

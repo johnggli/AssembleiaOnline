@@ -1,4 +1,5 @@
 pt-BR:
+  login: Entrar
   actions: Ações
   options: Opções
   new_option: Nova opção
@@ -9,6 +10,12 @@ pt-BR:
   no_ata: Sem ata
   remove_ata: Remover Ata
   confirm: 'Você tem certeza?'
+  situation: Situação
+  voting_topics: tópicos para votação
+  users_only: Apenas para moradores
+  day: Dia
+  closure: Encerramento
+  latest: Últimas
   links:
     home: Início
     new: Novo(a)
@@ -37,3 +44,4 @@ pt-BR:
     create: foi criado com sucesso!
     update: foi atualizado com sucesso!
     delete: foi deletado com sucesso!
+  message: O histórico de todas as Assembléias são mantidos no sistema caso algum morador deseje realizar alguma consulta.

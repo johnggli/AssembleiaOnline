@@ -3,6 +3,7 @@ class HomeController < ApplicationController
   
   def index
     @assemblies = Assembly.all
+    
   end
   
   def search

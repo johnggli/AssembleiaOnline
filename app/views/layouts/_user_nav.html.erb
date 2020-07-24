@@ -12,6 +12,21 @@
         <li class="nav-item <%= 'active' if controller_name == "assemblies" %>">
           <%= link_to Assembly.model_name.human(count: 2), assemblies_path, class:'nav-link' %>
         </li>
+        <% if user_signed_in? %>
+          <% if current_user.role == 'admin' %>
+            <li class="nav-item <%# 'active' if controller_name == "assemblies" %>">
+              <%= link_to t('Admin'), admin_assemblies_path, class:'nav-link' %>
+            </li>
+          <% end %>
+          <li class="nav-item <%# 'active' if controller_name == "assemblies" %>">
+            <span style="color:white; margin-left:100px;"><%= t('hello') + ', ' + current_user.user_name %></span>
+            <span style="margin-left:20px"><%= link_to t('logout'), destroy_user_session_path, method: :delete, class:'btn btn-danger' %></span>
+          </li>
+        <% else %>
+          <li class="nav-item <%# 'active' if controller_name == "assemblies" %>">
+            <span style="margin-left:30px;"><%= link_to t('login'), new_user_session_path, class:'btn btn-success' %></span>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

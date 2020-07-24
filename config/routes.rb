@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       end
     end
   end
-  
+  root 'home#index'
   devise_for :users
 
   patch 'admin/users/:id/set_paid', to:'admin/users#set_paid', as: :set_paid

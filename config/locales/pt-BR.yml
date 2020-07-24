@@ -27,7 +27,6 @@ pt-BR:
     password:
       normal: Senha
       confirmation: Confirme a senha
-
   links:
     home: Início
     new: Novo(a)

@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     #get 'assemblies/index'
-    resources :assemblies
+    resources :assemblies do
+      collection do
+        put ':id/open_close_state', to: 'assemblies#open_close_state'
+      end
+    end
   end
   namespace :admin do
     #get 'topics/index'
@@ -27,7 +31,4 @@ Rails.application.routes.draw do
 
   patch 'admin/users/:id/set_paid', to:'admin/users#set_paid', as: :set_paid
   patch 'admin/users/:id/set_not_paid', to:'admin/users#set_not_paid', as: :set_not_paid
-
-  patch 'admin/assemblies/:id/set_state', to:'admin/assemblies#set_state', as: :set_state
-  patch 'admin/assemblies/:id/set_not_state', to:'admin/assemblies#set_not_state', as: :set_not_state
 end

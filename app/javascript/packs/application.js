@@ -22,3 +22,5 @@ require("cocoon-js")
 
 require("trix")
 require("@rails/actiontext")
+
+require("src/main")

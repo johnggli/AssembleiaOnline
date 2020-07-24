@@ -1,5 +1,5 @@
 class Admin::AssembliesController < AdminController
-  before_action :set_assembly, only: [:show, :edit, :update, :destroy, :set_state, :set_not_state]
+  before_action :set_assembly, only: [:show, :edit, :update, :destroy, :open_close_state]
 
   # GET /assemblies
   # GET /assemblies.json
@@ -67,14 +67,13 @@ class Admin::AssembliesController < AdminController
     end
   end
 
-  def set_state
-    @assembly.update(state: :open)
-    redirect_to admin_assemblies_path
-  end
-
-  def set_not_state
-    @assembly.update(state: :close)
-    redirect_to admin_assemblies_path
+  def open_close_state
+    @assembly.state == "open" ? @assembly.state = :close : @assembly.state = :open
+    if @assembly.save
+      render json: { success: true, state: @assembly.state }
+    else
+      render json: { success: false }
+    end
   end
 
   private

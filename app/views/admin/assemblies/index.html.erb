@@ -27,20 +27,16 @@
 
         <td>
           <% if assembly.state == 'open' %>
-            <span class="badge badge-success"><%= t('state.open') %></span>
+            <span class="badge badge-success" id="badge-<%= assembly.id %>"><%= t('state.open') %></span>
           <% elsif assembly.state == 'close' %>
-            <span class="badge badge-danger"><%= t('state.close') %></span>
+            <span class="badge badge-danger" id="badge-<%= assembly.id %>"><%= t('state.close') %></span>
           <% else %>
-            <span class="badge badge-warning"><%= t('state.sketch') %></span>
+            <span class="badge badge-warning" id="badge-<%= assembly.id %>"><%= t('state.sketch') %></span>
           <% end %>
         </td>
 
         <td>
-          <%if assembly.state == 'open'%>
-            <%= link_to t('links.close'), set_not_state_path(assembly), method: :patch, class:"btn btn-outline-danger" %>
-          <%else%>  
-            <%= link_to t('links.open'), set_state_path(assembly), method: :patch, class:"btn btn-outline-success" %>
-          <% end %>
+          <%= button_tag assembly.state == 'open' ? t('links.close') : t('links.open'), class:"btn-open-close #{assembly.state == 'open' ? 'btn btn-outline-danger' : 'btn btn-outline-success'}", id:"assembly-#{assembly.id}" %>
           <%= link_to t('links.edit'), edit_admin_assembly_path(assembly), class:"btn btn-primary" %>
           <%= link_to t('links.delete'), admin_assembly_path(assembly), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger" %>
         </td>

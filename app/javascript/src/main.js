@@ -1,3 +1,13 @@
+/*$(document).ready(function() {
+  $('#search_pre_registration').on("keyup", () => {
+    if($('#search_pre_registration').val().length == 14) {
+      $get("/search_pre_register_cpf?cpf=" + $('#search_pre_registration').val(), function (data) {
+        console.log(data)
+       }) 
+     }
+   })
+})*/
+
 $(document).ready(function () {
   $('.btn-open-close').click(function() {
     let id = $(this).attr('id').split('-')[1]

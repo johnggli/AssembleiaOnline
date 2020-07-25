@@ -6,33 +6,37 @@
   <div class="card-body">
     <div class="card-columns">
       <% @assemblies.each do |assembly| %>
-        <div class="card">
-          <div class="card-header text-center">
-            <h3><%= "##{assembly.id} #{assembly.title}" %></h3>
-          </div>
-          <div class="card-body text-center">
-            <p style="font-size:24px"><%= t('situation') %>:
-              <% if assembly.state == 'open' %>
-                <span class="badge badge-success"><%= t('state.open') %></span>
-              <% elsif assembly.state == 'close' %>
-                <span class="badge badge-danger"><%= t('state.close') %></span>
+        <% if assembly.state != 'sketch' %>
+          <div class="card">
+            <div class="card-header text-center">
+              <h3><%= "##{assembly.id} #{assembly.title}" %></h3>
+            </div>
+            <div class="card-body text-center">
+              <p style="font-size:24px"><%= t('situation') %>:
+                <% if assembly.state == 'open' %>
+                  <span class="badge badge-success"><%= t('state.open') %></span>
+                <% elsif assembly.state == 'close' %>
+                  <span class="badge badge-danger"><%= t('state.close') %></span>
+                <% end %>
+              </p>
+              <p>
+                <%= "NaN" %> <%= t('voting_topics') %><br>
+                <%if user_signed_in? %>
+                  <%= t('day') %> <strong> <%= assembly.start_time %> </strong><br>
+                  <%= t('closure') %> <strong> <%= assembly.finish_time %> </strong>
+                <% else %>
+                  <%= t('day') %> <strong><%= t('users_only') %></strong><br>
+                  <%= t('closure') %> <strong><%= t('users_only') %></strong>
+                <% end %>
+              </p>
+              <% if(user_signed_in?)%>
+                <%= link_to t('links.details'), assembly_path(assembly), class:"btn btn-outline-info", style:"width: 100%" %>
               <% else %>
-                <span class="badge badge-warning"><%= t('state.sketch') %></span>
+                <%= link_to t('links.details'), new_user_session_path , class:"btn btn-outline-info", style:"width: 100%" %>
               <% end %>
-            </p>
-            <p>
-              <%= "NaN" %> <%= t('voting_topics') %><br>
-              <%if user_signed_in? %>
-                <%= t('day') %> <strong> <%= assembly.start_time %> </strong><br>
-                <%= t('closure') %> <strong> <%= assembly.finish_time %> </strong>
-              <% else %>
-                <%= t('day') %> <strong><%= t('users_only') %></strong><br>
-                <%= t('closure') %> <strong><%= t('users_only') %></strong>
-              <% end %>
-            </p>
-            <%= link_to t('links.details'), assembly_path(assembly), class:"btn btn-outline-info", style:"width: 100%" %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

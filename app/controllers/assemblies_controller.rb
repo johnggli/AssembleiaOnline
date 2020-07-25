@@ -8,6 +8,8 @@ class AssembliesController < ApplicationController
   def show
     @assembly = Assembly.find(params[:id])
     @block = false
+    @total_users_paid = User.where("paid = true").length
+    @total_topic_votes = 0
   end
 
   def do_a_vote

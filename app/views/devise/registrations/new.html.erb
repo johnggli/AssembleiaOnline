@@ -9,16 +9,17 @@
       <%#= render "devise/shared/error_messages", resource: resource %>
       <%#= f.label t('devise.pre_cpf')%>
       <div class="form-group">
-        <%= f.label t('devise.user_name') %><br>
+        <%= f.label t('username') %><br>
         <%= f.text_field :user_name, class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.label t('devise.email') %><br>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label t('devise.password.normal') %>
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: 'email', class: 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
         <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
         <% if @minimum_password_length %>
           <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>

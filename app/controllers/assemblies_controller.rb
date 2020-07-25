@@ -1,4 +1,6 @@
-class User::AssembliesController < UserController
+class AssembliesController < ApplicationController
+  layout 'user'
+
   def index
     @assemblies = Assembly.all
   end

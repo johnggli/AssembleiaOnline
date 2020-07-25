@@ -73,17 +73,27 @@
                 <%= topic.description %>
               </p>
               <% topic.options.each do |option| %>
+                <% if option.votes.present? && current_user.id.in?(option.users.pluck(:id)) %>
+                  <% @block = true %>
+                <% end %>
+              <% end %>
+              <% topic.options.each do |option| %>
                 <hr>
                 <div class="row">
                   <div class="col">
                     <%= option.description %>
                   </div>
                   <div class="col">
-                    <span class="badge badge-pill badge-warning p-2">8.32%</span>
-                    <span class="badge badge-pill badge-primary p-2">42 <%= Vote.model_name.human(count: 2) %></span>
+                    <% if @block %>
+                      <span class="badge badge-pill badge-warning p-2">8.32%</span>
+                      <span class="badge badge-pill badge-primary p-2">42 <%= Vote.model_name.human(count: 2) %></span>
+                    <% else %>
+                      <%= link_to 'Votar', do_a_vote_path(option), method: :patch, class:"badge badge-pill badge-success p-2" %>
+                    <% end %>
                   </div>
                 </div>
               <% end %>
+              <% @block = false %>
             </div>
           </div>
 

@@ -35,6 +35,7 @@ class User < ApplicationRecord
 
   belongs_to :pre_registration
 
+  has_many :votes
   has_many :options, through: :votes
 
   enum role: [:user, :admin]

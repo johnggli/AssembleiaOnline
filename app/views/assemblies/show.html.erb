@@ -64,15 +64,8 @@
             </div>
             <div class="card-body text-center">
 
-              <% topic.options.each do |option| %>
-                <% if option.votes.present? && current_user.id.in?(option.users.pluck(:id)) %>
-                  <% @block = true %>
-                <% end %>
-                <% @total_topic_votes += option.votes.length %>
-              <% end %>
-
               <div style="font-size:24px">
-                <strong><%= @total_topic_votes %></strong>
+                <strong><%= topic.sum_votes %></strong>
                 <span class="text-secondary">
                   / <%= @total_users_paid %> <%= Vote.model_name.human(count: 2) %>
                 </span>
@@ -87,9 +80,9 @@
                     <%= option.description %>
                   </div>
                   <div class="col">
-                    <% if @block %>
+                    <% if topic.user_voted(current_user.id) %>
                       <span class="badge badge-pill badge-warning p-2">
-                        <%= "#{((option.votes.length.to_f/@total_topic_votes.to_f)*100).round(2)}%" %>
+                        <%= "#{((option.votes.length.to_f/topic.sum_votes.to_f)*100).round(2)}%" %>
                       </span>
                       <span class="badge badge-pill badge-primary p-2">
                         <%= option.votes.length %> <%= Vote.model_name.human(count: 2) %>
@@ -100,8 +93,6 @@
                   </div>
                 </div>
               <% end %>
-              <% @block = false %>
-              <% @total_topic_votes = 0 %>
             </div>
           </div>
 

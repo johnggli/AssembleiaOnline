@@ -1,15 +1,14 @@
 class AssembliesController < ApplicationController
   layout 'user'
+  
+  before_action :set_assembly, only: { :show }
 
   def index
     @assemblies = Assembly.all
   end
 
   def show
-    @assembly = Assembly.find(params[:id])
-    @block = false
-    @total_users_paid = User.where("paid = true").length
-    @total_topic_votes = 0
+    @total_users_paid = User.where(paid: true).length
   end
 
   def do_a_vote
@@ -17,13 +16,11 @@ class AssembliesController < ApplicationController
     
     @assembly = Option.find(params[:id]).topic.assembly
     redirect_to assembly_path(@assembly)
+  end
 
+  private
 
-    # @assembly.state == "open" ? @assembly.state = :close : @assembly.state = :open
-    # if @assembly.save
-    #   render json: { success: true, state: @assembly.state }
-    # else
-    #   render json: { success: false }
-    # end
+  def set_assembly
+    @assembly = Assembly.find(params[:id])
   end
 end

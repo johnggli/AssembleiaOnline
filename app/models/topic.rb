@@ -28,4 +28,11 @@ class Topic < ApplicationRecord
 
   accepts_nested_attributes_for :options, reject_if: :all_blank, allow_destroy: true
 
+  def sum_votes
+    options.map { |option| option.votes.count }.sum
+  end
+
+  def user_voted(current_user_id)
+    options.map { |option| option.users.exists?(current_user_id) }.include?(true)
+  end
 end

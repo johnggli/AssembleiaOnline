@@ -1,7 +1,7 @@
 class AssembliesController < ApplicationController
   layout 'user'
   
-  before_action :set_assembly, only: { :show }
+  before_action :set_assembly, only: [:show]
 
   def index
     @assemblies = Assembly.all

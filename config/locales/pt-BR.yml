@@ -1,6 +1,9 @@
 pt-BR:
   hello: Olá 
   login: Entrar
+  sign_in: Fazer Login
+  sign_up: Cadastrar-se
+  username: Nome completo
   actions: Ações
   options: Opções
   new_option: Nova opção
@@ -17,17 +20,6 @@ pt-BR:
   day: Dia
   closure: Encerramento
   latest: Últimas
-  devise:
-    do_login: Fazer Login
-    user_name: Nome Completo
-    remember: Lembrar-se
-    sign_up: Cadastrar-se
-    forgot_p: Esqueceu sua senha ?
-    email: Email
-    pre_cpf: CPF Pré Registrado
-    password:
-      normal: Senha
-      confirmation: Confirme a senha
   links:
     home: Início
     new: Novo(a)

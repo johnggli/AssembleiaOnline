@@ -1,18 +1,34 @@
-<h2>Forgot your password?</h2>
+<%= render "layouts/user_nav" %>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+<div class="container" style="padding-top: 64px; text-align:center;">
+  
+  <h2 class="font-weight-bold p-3"><%= t('.forgot_your_password') %></h2>
 
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" } %>
+  <div class="card card-body col-lg-6 m-auto">
+    <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%#= f.error_notification %>
+
+      <div class="form-group">
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" } %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary w-100' %>
+      </div>
+    <% end %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
+  <br>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+
+  <footer class="py-5">
+    <div class="container">
+      <p class="m-0 text-center">Copyright &copy; CavernaLabs 2020</p>
+    </div>
+  </footer>
+
+</div>

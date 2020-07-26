@@ -1,12 +1,26 @@
-/*$(document).ready(function() {
-  $('#search_pre_registration').on("keyup", () => {
-    if($('#search_pre_registration').val().length == 14) {
-      $get("/search_pre_register_cpf?cpf=" + $('#search_pre_registration').val(), function (data) {
+$(document).ready(function() {
+  $('.search_pre_registration').on("keyup", () => {
+    if($('.search_pre_registration').val().length == 14) {
+      $.get("/search_pre_registration?cpf=" + $('.search_pre_registration').val(), function (data) {
         console.log(data)
-       }) 
+        if(data.error){
+          $('.search_error').removeClass('d-none')
+          $('.search_cpf').val('')
+          $('.search_ap').val('')
+          $('.search_bloc').val('')
+          $('.search_id').val('')
+        }
+        else {
+          $('.search_error').addClass('d-none')
+          $('.search_cpf').val(data.cpf)
+          $('.search_ap').val(data.ap)
+          $('.search_bloc').val(data.bloc)
+          $('.search_id').val(data.id)
+        }
+      }) 
      }
    })
-})*/
+})
 
 $(document).ready(function () {
   $('.btn-open-close').click(function() {

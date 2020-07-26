@@ -21,5 +21,6 @@ class Option < ApplicationRecord
 
   validates :description, presence: true
   
+  has_many :votes
   has_many :users, through: :votes
 end

@@ -10,7 +10,11 @@
           <%= link_to t('links.home'), home_index_path, class:'nav-link' %>
         </li>
         <li class="nav-item <%= 'active' if controller_name == "assemblies" %>">
-          <%= link_to Assembly.model_name.human(count: 2), assemblies_path, class:'nav-link' %>
+          <% if(user_signed_in?)%>
+            <%= link_to Assembly.model_name.human(count: 2), assemblies_path, class:'nav-link' %>
+          <% else %>
+            <%= link_to Assembly.model_name.human(count: 2), new_user_session_path , class:'nav-link' %>
+          <% end %>
         </li>
         <% if user_signed_in? %>
           <% if current_user.role == 'admin' %>

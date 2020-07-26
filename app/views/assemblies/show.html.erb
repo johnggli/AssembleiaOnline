@@ -63,10 +63,18 @@
               </div>
             </div>
             <div class="card-body text-center">
+
+              <% topic.options.each do |option| %>
+                <% if option.votes.present? && current_user.id.in?(option.users.pluck(:id)) %>
+                  <% @block = true %>
+                <% end %>
+                <% @total_topic_votes += option.votes.length %>
+              <% end %>
+
               <div style="font-size:24px">
-                <strong><%= "NaN" %></strong>
+                <strong><%= @total_topic_votes %></strong>
                 <span class="text-secondary">
-                  / <%= "NaN" %> <%= Vote.model_name.human(count: 2) %>
+                  / <%= @total_users_paid %> <%= Vote.model_name.human(count: 2) %>
                 </span>
               </div>
               <p>
@@ -79,11 +87,21 @@
                     <%= option.description %>
                   </div>
                   <div class="col">
-                    <span class="badge badge-pill badge-warning p-2">8.32%</span>
-                    <span class="badge badge-pill badge-primary p-2">42 <%= Vote.model_name.human(count: 2) %></span>
+                    <% if @block %>
+                      <span class="badge badge-pill badge-warning p-2">
+                        <%= "#{((option.votes.length.to_f/@total_topic_votes.to_f)*100).round(2)}%" %>
+                      </span>
+                      <span class="badge badge-pill badge-primary p-2">
+                        <%= option.votes.length %> <%= Vote.model_name.human(count: 2) %>
+                      </span>
+                    <% else %>
+                      <%= link_to 'Votar', do_a_vote_path(option), method: :patch, class:"badge badge-pill badge-success p-2" %>
+                    <% end %>
                   </div>
                 </div>
               <% end %>
+              <% @block = false %>
+              <% @total_topic_votes = 0 %>
             </div>
           </div>
 

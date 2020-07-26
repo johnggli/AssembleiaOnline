@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   root 'home#index'
   devise_for :users
 
+  get '/search_pre_registration', to: 'home#search', as: :search_pre_registration
+
   patch 'admin/users/:id/set_paid', to:'admin/users#set_paid', as: :set_paid
   patch 'admin/users/:id/set_not_paid', to:'admin/users#set_not_paid', as: :set_not_paid
 

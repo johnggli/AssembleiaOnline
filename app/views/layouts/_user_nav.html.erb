@@ -11,7 +11,7 @@
         </li>
         <li class="nav-item <%= 'active' if controller_name == "assemblies" %>">
           <% if(user_signed_in?)%>
-            <%= link_to Assembly.model_name.human(count: 2), admin_assemblies_path, class:'nav-link' %>
+            <%= link_to Assembly.model_name.human(count: 2), assemblies_path, class:'nav-link' %>
           <% else %>
             <%= link_to Assembly.model_name.human(count: 2), new_user_session_path , class:'nav-link' %>
           <% end %>

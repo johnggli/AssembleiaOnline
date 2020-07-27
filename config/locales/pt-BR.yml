@@ -1,6 +1,7 @@
 pt-BR:
   hello: Olá 
   login: Entrar
+  logout: Sair
   sign_in: Fazer Login
   sign_up: Cadastrar-se
   username: Nome completo
@@ -55,3 +56,4 @@ pt-BR:
   to: Até
   of: de
   vote_history: Histórico de votos
+  pre_registration_not_found: CPF não encontrado

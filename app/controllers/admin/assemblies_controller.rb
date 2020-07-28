@@ -4,7 +4,7 @@ class Admin::AssembliesController < AdminController
   # GET /assemblies
   # GET /assemblies.json
   def index
-    @assemblies = Assembly.all
+    @assemblies = Assembly.all.page(params[:page]).per(5)
   end
 
   # GET /assemblies/1

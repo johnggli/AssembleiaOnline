@@ -5,6 +5,10 @@
 
 <hr>
 
+<p>
+  <%= page_entries_info @assemblies %>
+</p>
+
 <table class="table table-bordered table-hover">
   <thead class="thead-light">
     <tr>
@@ -45,3 +49,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @assemblies %>

@@ -5,6 +5,10 @@
 
 <hr>
 
+<p>
+  <%= page_entries_info @users %>
+</p>
+
 <table class="table table-bordered table-hover">
   <thead class="thead-light">
     <tr>
@@ -47,3 +51,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @users %>

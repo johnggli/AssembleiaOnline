@@ -9,6 +9,7 @@ class AssembliesController < ApplicationController
 
   def show
     @total_users_paid = User.where(paid: true).length
+    @max_votes = User.where(paid: true).count
   end
 
   def do_a_vote
@@ -16,6 +17,12 @@ class AssembliesController < ApplicationController
     
     @assembly = Option.find(params[:id]).topic.assembly
     redirect_to assembly_path(@assembly)
+  end
+
+  def history_votes
+    @max_votes = User.where(paid: true).count
+    @topic = Topic.find(params[:topic_id])
+    @votes = Vote.includes(:user, :option).where(option_id: [@topic.options.pluck(:id)])
   end
 
   private

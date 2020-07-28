@@ -53,3 +53,10 @@ $(document).ready(function () {
     })
   })
 });
+
+$(document).ready(function () {
+  $('.button-history-votes').click(function () {
+    $('.modal-title').html("Histórico de votos")
+    $('.votes-list').html("Carregando..")
+  })
+})

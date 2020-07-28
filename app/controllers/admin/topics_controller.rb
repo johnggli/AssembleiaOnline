@@ -4,7 +4,8 @@ class Admin::TopicsController < AdminController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all.page(params[:page]).per(5)
+    @q = Topic.ransack(params[:q])
+    @topics = @q.result.page(params[:page]).per(5)
   end
 
   # GET /topics/1

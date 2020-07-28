@@ -1,0 +1,8 @@
+<div class="text-center">
+  <%= search_form_for @q, url: admin_topics_path, class: 'form-inline d-flex justify-content-center' do |f| %>
+    <%= f.search_field :title_cont, placeholder: Topic.human_attribute_name(:title), class: 'form-control w-25' %>&nbsp;
+    <%= f.select(:assembly_id_eq, options_for_select(Assembly.all.pluck(:title, :id)), { include_blank: t('select.assembly') }, {class: "form-control" }) %>&nbsp;
+    <%= f.submit class: 'btn btn-outline-primary' %>&nbsp;
+    <%= link_to "&#10799;".html_safe, request.path, class: "font-weight-bold btn btn-outline-secondary" %>
+  <% end %>
+</div>

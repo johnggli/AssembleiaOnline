@@ -1,0 +1,9 @@
+<div class="text-center">
+  <%= search_form_for @q, url: admin_pre_registrations_path, class: 'form-inline d-flex justify-content-center' do |f| %>
+    <%= f.search_field :cpf_cont, placeholder: PreRegistration.human_attribute_name(:cpf), class: 'form-control w-25' %>&nbsp;
+    <%= f.select(:bloc_eq, options_for_select(PreRegistration::BLOC), { include_blank: t('select.bloc') }, {class: "form-control" }) %>&nbsp;
+    <%= f.select(:ap_eq, options_for_select(PreRegistration::AP), { include_blank: t('select.ap') }, {class: "form-control" }) %>&nbsp;
+    <%= f.submit class: 'btn btn-outline-primary' %>&nbsp;
+    <%= link_to "&#10799;".html_safe, request.path, class: "font-weight-bold btn btn-outline-secondary" %>
+  <% end %>
+</div>

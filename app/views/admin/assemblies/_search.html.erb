@@ -1,0 +1,9 @@
+<div class="text-center">
+  <%= search_form_for @q, url: admin_assemblies_path, class: 'form-inline d-flex justify-content-center' do |f| %>
+    <%= f.search_field :title_cont, placeholder: Assembly.human_attribute_name(:title), class: 'form-control w-25' %>&nbsp;
+    <%= f.select(:state_eq, options_for_select(Assembly.states.to_a.map { |w| [t('state.' + w[0]), w[1]] }), { include_blank: t('situation') }, {class: "form-control" }) %>&nbsp;
+    <%#= Fazer a pesquisa por data de inicio e de encerramento %>
+    <%= f.submit class: 'btn btn-outline-primary' %>&nbsp;
+    <%= link_to "&#10799;".html_safe, request.path, class: "font-weight-bold btn btn-outline-secondary" %>
+  <% end %>
+</div>

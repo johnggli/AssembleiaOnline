@@ -5,7 +5,8 @@ class Admin::PreRegistrationsController < AdminController
   # GET /pre_registrations
   # GET /pre_registrations.json
   def index
-    @pre_registrations = PreRegistration.all.page(params[:page]).per(5)
+    @q = PreRegistration.ransack(params[:q])
+    @pre_registrations = @q.result.page(params[:page]).per(5)
   end
 
   # GET /pre_registrations/1

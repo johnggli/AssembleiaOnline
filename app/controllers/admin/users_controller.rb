@@ -2,7 +2,8 @@ class Admin::UsersController < AdminController
   before_action :set_user, only: [:edit, :update, :destroy, :set_paid, :set_not_paid]
 
   def index
-    @users = User.all.page(params[:page]).per(5)
+    @q = User.ransack(params[:q])
+    @users = @q.result.page(params[:page]).per(5)
   end
 
   def new

@@ -1,0 +1,2 @@
+$('.votes-list').html("<%= j(render 'assemblies/votes', '@votes': @votes, '@topic': @topic, '@max_votes': @max_votes) -%>")
+$('.modal-title').html("<%= t('vote_history') %> <%= t('of') %> #<%= @topic.title %>")

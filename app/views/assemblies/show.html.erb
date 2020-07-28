@@ -46,84 +46,33 @@
   </div>
   <div class="card-body">
     <div class="card-columns">
-      <% @assembly.topics.each do |topic| %>
-          <div class="card">
-            <div class="card-header">
-              <div class="row text-center align-items-center">
-                <div class="col">
-                  <h5>#<%= topic.title %></h5>
-                </div>
-
-                <!-- Button to Open the Modal -->
-                <button type="button" class="btn btn-outline-info"
-                  data-toggle="modal" data-target="#myModal_<%= topic.id %>"
-                  style="font-size: 14px; width: 90px; float:right; margin-right: 10px;">
-                  <%= t('vote_history') %>
-                </button>
-              </div>
-            </div>
-            <div class="card-body text-center">
-
-              <div style="font-size:24px">
-                <strong><%= topic.sum_votes %></strong>
-                <span class="text-secondary">
-                  / <%= @total_users_paid %> <%= Vote.model_name.human(count: 2) %>
-                </span>
-              </div>
-              <p>
-                <%= topic.description %>
-              </p>
-              <% topic.options.each do |option| %>
-                <hr>
-                <div class="row">
-                  <div class="col">
-                    <%= option.description %>
-                  </div>
-                  <div class="col">
-                    <% if topic.user_voted(current_user.id) %>
-                      <span class="badge badge-pill badge-warning p-2">
-                        <%= "#{((option.votes.length.to_f/topic.sum_votes.to_f)*100).round(2)}%" %>
-                      </span>
-                      <span class="badge badge-pill badge-primary p-2">
-                        <%= option.votes.length %> <%= Vote.model_name.human(count: 2) %>
-                      </span>
-                    <% else %>
-                      <%= link_to 'Votar', do_a_vote_path(option), method: :patch, class:"badge badge-pill badge-success p-2" %>
-                    <% end %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
-          </div>
-
-          <!-- The Modal -->
-          <div class="modal fade" id="myModal_<%= topic.id %>">
-            <div class="modal-dialog modal-lg">
-              <div class="modal-content">
-
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">
-                    <%= "#{t('vote_history')} #{t('of')} ##{topic.title}" %>
-                  </h4>
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div class="modal-body">
-                  <div style="font-size:20px">
-                    <strong><%= "NaN" %></strong>
-                    <span class="text-secondary">
-                      / <%= "NaN" %> <%= Vote.model_name.human(count: 2) %>
-                    </span>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
+      <% @assembly.topics.order(:id).includes(:options).each do |topic| %>
+        <div id="show_topic_<%= topic.id %>">
+          <%= render 'assemblies/topic', topic: topic %>
+        </div>
       <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body votes-list"></div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
     </div>
   </div>
 </div>

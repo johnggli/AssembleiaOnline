@@ -33,7 +33,6 @@ gem 'simple_form'
 gem 'mini_magick'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'cocoon'
-gem 'jquery-rails'
 gem 'tty-spinner'
 
 group :development, :test do

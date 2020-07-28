@@ -5,6 +5,14 @@
 
 <hr>
 
+<%= render 'admin/pre_registrations/search' %>
+
+<hr>
+
+<p>
+  <%= page_entries_info @pre_registrations %>
+</p>
+
 <table class="table table-bordered table-hover">
   <thead class="thead-light">
     <tr>
@@ -33,3 +41,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @pre_registrations %>

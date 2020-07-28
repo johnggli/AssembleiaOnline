@@ -5,6 +5,14 @@
 
 <hr>
 
+<%= render 'admin/topics/search' %>
+
+<hr>
+
+<p>
+  <%= page_entries_info @topics %>
+</p>
+
 <table class="table table-bordered table-hover">
   <thead class="thead-light">
     <tr>
@@ -32,3 +40,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @topics %>

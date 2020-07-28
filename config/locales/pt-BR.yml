@@ -47,6 +47,7 @@ pt-BR:
     bloc: Selecione um Bloco
     ap: Selecione um Apartamento
     assembly: Selecione uma Assembléia
+    type: Selecione um tipo
   success:
     create: foi criado com sucesso!
     update: foi atualizado com sucesso!

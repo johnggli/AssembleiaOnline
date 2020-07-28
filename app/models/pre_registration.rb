@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class PreRegistration < ApplicationRecord
-    BLOCK = (1..36).to_a.freeze
+    BLOC = (1..36).to_a.freeze
     AP = [
         101, 102, 103, 104,
         201, 202, 203, 204,

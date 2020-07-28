@@ -1,0 +1,11 @@
+<% topic.options.each do |option| %>
+  <div class="row">
+    <div class="col">
+      <%= option.description %>
+    </div>
+    <div calss='col'>
+      <%= button_to 'Votar', do_a_vote_path(option.id) , class: "btn-primary", data: { id: topic.id},  
+          method: :get, remote: true %>
+    </div>
+  </div>  
+<% end %>

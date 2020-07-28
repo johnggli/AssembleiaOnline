@@ -14,7 +14,7 @@
 
   <div class="card-body text-center">
     <h4>
-      <strong><%= topic.sum_votes %></strong>
+      <strong class="total_votes_<%=topic.id%>"><%= topic.sum_votes %></strong>
       <span class="text-secondary">
         / <%= @max_votes %> <%= Vote.model_name.human(count: 2) %>
       </span>
@@ -23,41 +23,17 @@
     <p>
       <%= topic.description %>
     </p>
-
-    <!-- A FAZER
-    <% if @assembly.start_time <= Time.now && @assembly.finish_time >= Time.now &&
-      (current_user.votes.pluck(:option_id) & topic.options.pluck(:id)).empty? && current_user.paid == true %>
-      <% if @assembly.state == 'close' %>
-        render 'assemblies/result_votes', topic: topic
+    <div class='result_text_<%=topic.id%>'>
+      <% if (@assembly.start_time <= Time.now && @assembly.finish_time >= Time.now) && 
+            !topic.user_voted(current_user.id) && current_user.paid%>
+        <% if @assembly.state == 'close' %>
+          <%= render 'assemblies/result_votes', topic: topic %>
+        <% else %>
+          <%= render 'assemblies/options_vote', topic: topic %>
+        <% end %>
       <% else %>
-        render 'assemblies/options_vote', topic: topic
+        <%= render 'assemblies/result_votes', topic: topic %>
       <% end %>
-    <% else %>
-      render 'assemblies/result_votes', topic: topic
-    <% end %>
-    -->
-
-    <!-- COLINHA
-    <% topic.options.each do |option| %>
-      <hr>
-      <div class="row">
-        <div class="col">
-          <%= option.description %>
-        </div>
-        <div class="col">
-          <% if topic.user_voted(current_user.id) %>
-            <span class="badge badge-pill badge-warning p-2">
-              <%= "#{((option.votes.length.to_f/topic.sum_votes.to_f)*100).round(2)}%" %>
-            </span>
-            <span class="badge badge-pill badge-primary p-2">
-              <%= option.votes.length %> <%= Vote.model_name.human(count: 2) %>
-            </span>
-          <% else %>
-            <%= link_to 'Votar', do_a_vote_path(option), method: :patch, class:"badge badge-pill badge-success p-2" %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-    -->
+    </div>
   </div>
 </div>

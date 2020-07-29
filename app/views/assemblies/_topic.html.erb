@@ -25,7 +25,7 @@
     </p>
     <div class='result_text_<%=topic.id%>'>
       <% if (@assembly.start_time <= Time.now && @assembly.finish_time >= Time.now) && 
-            !topic.user_voted(current_user.id) && current_user.paid%>
+        !topic.user_voted(current_user.id) && current_user.paid %>
         <% if @assembly.state == 'close' %>
           <%= render 'assemblies/result_votes', topic: topic %>
         <% else %>

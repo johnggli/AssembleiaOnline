@@ -30,7 +30,7 @@
         <td><%= topic.id %></td>
         <td><%= topic.title %></td>
         <td><%= topic.assembly.title %></td>
-        <td><%= "0" %></td>
+        <td><%= topic.sum_votes %></td>
         <td>
           <%= link_to t('links.report'), '#', class:"btn btn-info" %>
           <%= link_to t('links.edit'), edit_admin_topic_path(topic), class:"btn btn-primary" %>

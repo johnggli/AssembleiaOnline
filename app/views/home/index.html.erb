@@ -20,7 +20,7 @@
                 <% end %>
               </p>
               <p>
-                <%= "NaN" %> <%= t('voting_topics') %><br>
+                <%= assembly.topics.size %> <%= t('voting_topics') %><br>
                 <%if user_signed_in? %>
                   <%= t('day') %> <strong><%= l(assembly.start_time, format: '%d/%m/%Y %H:%M') %></strong><br>
                   <%= t('closure') %> <strong><%= l(assembly.finish_time, format: '%d/%m/%Y %H:%M') %></strong>

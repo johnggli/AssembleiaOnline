@@ -20,7 +20,7 @@
 class Topic < ApplicationRecord
   default_scope { order(id: :desc) }
 
-  belongs_to :assembly, inverse_of: :topics
+  belongs_to :assembly, inverse_of: :topics, counter_cache: true
 
   has_rich_text :description
 

@@ -13,6 +13,12 @@ class Admin::TopicsController < AdminController
   def show
   end
 
+  def report
+    @topic = Topic.find(params[:topic_id])
+    @votes = Vote.includes(:user, :option).where(option_id: [@topic.options.pluck(:id)])
+    @max_votes = User.where(paid: true).count
+  end
+
   # GET /topics/new
   def new
     @topic = Topic.new

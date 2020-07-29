@@ -24,4 +24,6 @@ Rails.application.routes.draw do
 
   get 'assemblies/:option_id/set_vote', to:'assemblies#set_vote', as: :set_vote
 
+  get 'admin/topics/:topic_id/report', to: 'admin/topics#report', as: :report
+
 end

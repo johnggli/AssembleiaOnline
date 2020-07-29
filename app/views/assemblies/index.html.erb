@@ -1,2 +1,43 @@
-<h1>User::Assemblies#index</h1>
-<p>Find me in app/views/user/assemblies/index.html.erb</p>
+<div class="card">
+  <div class="card-body text-center">
+    <h1><%= "#{t('all')} #{Assembly.model_name.human(count: 2)}" %></h1>
+    <h5 class="text-secondary text-center w-75 m-auto" ><%= t('message') %></h5>
+  </div>
+  <div class="card-body">
+    <div class="card-columns">
+      <% @assemblies.each do |assembly| %>
+        <% if assembly.state != 'sketch' %>
+          <div class="card">
+            <div class="card-header text-center">
+              <h3><%= "##{assembly.id} #{assembly.title}" %></h3>
+            </div>
+            <div class="card-body text-center">
+              <p class="assembly-state"><%= t('situation') %>:
+                <% if assembly.state == 'open' %>
+                  <span class="badge badge-success"><%= t('state.open') %></span>
+                <% elsif assembly.state == 'close' %>
+                  <span class="badge badge-danger"><%= t('state.close') %></span>
+                <% end %>
+              </p>
+              <p>
+                <%= assembly.topics.size %> <%= t('voting_topics') %><br>
+                <%if user_signed_in? %>
+                  <%= t('day') %> <strong><%= l(assembly.start_time, format: '%d/%m/%Y %H:%M') %></strong><br>
+                  <%= t('closure') %> <strong><%= l(assembly.finish_time, format: '%d/%m/%Y %H:%M') %></strong>
+                <% else %>
+                  <%= t('day') %> <strong><%= t('users_only') %></strong><br>
+                  <%= t('closure') %> <strong><%= t('users_only') %></strong>
+                <% end %>
+              </p>
+              <% if(user_signed_in?)%>
+                <%= link_to t('links.details'), assembly_path(assembly), class:"btn btn-outline-info w-100" %>
+              <% else %>
+                <%= link_to t('links.details'), new_user_session_path , class:"btn btn-outline-info w-100" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

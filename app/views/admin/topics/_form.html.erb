@@ -1,7 +1,7 @@
 <%= simple_form_for @topic, url: url, method: method do |p| %>
-  <%= p.input :title, input_html: { style: "width: 50%;" } %>
-  <%= p.association :assembly, label: Assembly.model_name.human, label_method: :title, value_method: :id, include_blank: t('select.assembly'), input_html: { style: "width: 50%;" } %>
-  <%= p.input :description, as: :rich_text_area, input_html: { style: "height: auto;" } %>
+  <%= p.input :title, input_html: { class: "w-50" } %>
+  <%= p.association :assembly, label: Assembly.model_name.human, label_method: :title, value_method: :id, include_blank: t('select.assembly'), input_html: { class: "w-50" } %>
+  <%= p.input :description, as: :rich_text_area, input_html: { class: "h-auto" } %>
 
   <hr>
 

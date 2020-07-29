@@ -22,8 +22,8 @@
             <%= link_to t('links.home'), home_index_path, class:'nav-link' %>
           </li>
           <li class="nav-item">
-            <span style="color:white; margin-left:100px;"><%= t('hello') + ', ' + current_user.user_name %></span>
-            <span style="margin-left:20px"><%= link_to t('logout'), destroy_user_session_path, method: :delete, data: { confirm: t('confirm') }, class:'btn btn-danger' %></span>
+            <span class="hello-user"><%= t('hello') + ', ' + current_user.user_name %></span>
+            <span><%= link_to t('logout'), destroy_user_session_path, method: :delete, data: { confirm: t('confirm') }, class:'btn btn-danger ml-3' %></span>
           </li>
         </ul>
       </div>

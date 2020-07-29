@@ -31,4 +31,20 @@ table {
 .btn_option {
   width: 50%;
 }
- 
+
+.assembly-description {
+  height: 200px;
+}
+
+.assembly-state {
+  font-size: 24px;
+}
+
+.hello-user {
+  color:white; 
+  margin-left:100px;
+}
+
+.user-navbar {
+  background: #004466;
+}

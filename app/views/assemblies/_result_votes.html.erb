@@ -1,14 +1,15 @@
 <% topic.options.each do |option| %>
-  <div class="row">
+  <hr>
+  <div class="row mr-3">
     <div class="col">
       <%= option.description %>
     </div>
     <div calss='col'>
       <span class="badge badge-pill badge-warning p-2">
-        <%= "#{((option.votes.length.to_f/topic.sum_votes.to_f)*100).round(2)}%" %>
+        <%= "#{option.percent_votes}%" %>
       </span>
       <span class="badge badge-pill badge-primary p-2">
-        <%= option.votes.length %> <%= Vote.model_name.human(count: 2) %>
+        <%= option.votes.count %> <%= Vote.model_name.human(count: 2) %>
       </span>
     </div>
   </div>

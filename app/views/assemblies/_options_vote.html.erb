@@ -1,11 +1,12 @@
 <% topic.options.each do |option| %>
-  <div class="row">
+  <hr>
+  <div class="row mr-3">
     <div class="col">
       <%= option.description %>
     </div>
     <div calss='col'>
-      <%= button_to 'Votar', set_vote_path(option.id) , class: "btn-primary", data: { id: topic.id},  
-          method: :get, remote: true %>
+      <%= link_to t('vote'), set_vote_path(option.id), class: "badge badge-pill badge-success p-2",  
+        method: :get, remote: true %>
     </div>
   </div>  
 <% end %>

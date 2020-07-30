@@ -1,7 +1,7 @@
 <div class="text-center">
   <%= search_form_for @q, url: admin_users_path, class: 'form-inline d-flex justify-content-center' do |f| %>
     <%= f.search_field :user_name_cont, placeholder: User.human_attribute_name(:user_name), class: 'form-control w-25' %>&nbsp;
-    <%#= f.select(:role_eq, options_for_select(User.roles.to_a.map { |w| [w[0].humanize, w[1]] }), { include_blank: t('select.type') }, {class: "form-control" }) %>
+    <%= f.search_field :cpf_cont, placeholder: PreRegistration.human_attribute_name(:cpf), class: 'form-control w-25' %>&nbsp;
     <%= f.select(:paid_eq, options_for_select([[t('yes'), true], [t('no'), false]].map { | w | [w[0].humanize, w[1]] }), { include_blank: t('select.type') }, {class: "form-control" }) %>&nbsp;
     <%= f.select(:bloc_eq, options_for_select(PreRegistration::BLOC), { include_blank: t('select.bloc') }, {class: "form-control" }) %>&nbsp;
     <%= f.select(:ap_eq, options_for_select(PreRegistration::AP), { include_blank: t('select.ap') }, {class: "form-control" }) %>&nbsp;

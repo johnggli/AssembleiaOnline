@@ -14,10 +14,6 @@
     <%= p.input :role, collection: User.roles.keys.map {|role| [role.titleize,role]}, include_blank: false %>
   </div>
 
-  <%= p.hidden_field :cpf %><br>
-  <%= p.hidden_field :ap %><br> 
-  <%= p.hidden_field :bloc %><br> 
-
   <hr>
 
   <div>

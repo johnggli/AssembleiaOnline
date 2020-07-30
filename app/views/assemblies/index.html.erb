@@ -21,19 +21,10 @@
               </p>
               <p>
                 <%= assembly.topics.size %> <%= t('voting_topics') %><br>
-                <%if user_signed_in? %>
-                  <%= t('day') %> <strong><%= l(assembly.start_time, format: '%d/%m/%Y %H:%M') %></strong><br>
-                  <%= t('closure') %> <strong><%= l(assembly.finish_time, format: '%d/%m/%Y %H:%M') %></strong>
-                <% else %>
-                  <%= t('day') %> <strong><%= t('users_only') %></strong><br>
-                  <%= t('closure') %> <strong><%= t('users_only') %></strong>
-                <% end %>
+                <%= t('day') %> <strong><%= l(assembly.start_time, format: '%d/%m/%Y %H:%M') %></strong><br>
+                <%= t('closure') %> <strong><%= l(assembly.finish_time, format: '%d/%m/%Y %H:%M') %></strong>
               </p>
-              <% if(user_signed_in?)%>
-                <%= link_to t('links.details'), assembly_path(assembly), class:"btn btn-outline-info w-100" %>
-              <% else %>
-                <%= link_to t('links.details'), new_user_session_path , class:"btn btn-outline-info w-100" %>
-              <% end %>
+              <%= link_to t('links.details'), assembly_path(assembly), class:"btn btn-outline-info w-100" %>
             </div>
           </div>
         <% end %>

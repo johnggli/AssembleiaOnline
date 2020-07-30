@@ -64,3 +64,4 @@ pt-BR:
   voted: Votou
   deny_access: Você não tem permissão para esta página
   login_info: Para continuar, efetue login ou registre-se
+  finish_time_error: deve ser posterior à data de início

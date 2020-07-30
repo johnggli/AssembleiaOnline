@@ -31,22 +31,25 @@
 class User < ApplicationRecord
   default_scope { order(id: :desc) }
   
+  belongs_to :pre_registration
+
+  has_many :votes, dependent: :destroy
+  has_many :options, through: :votes
+
+  enum role: [:user, :admin]
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  belongs_to :pre_registration
-
-  has_many :votes
-  has_many :options, through: :votes
-
-  enum role: [:user, :admin]
-
   after_initialize :set_default_role, if: :new_record?
 
-  validates :pre_registration_id, presence: true, uniqueness: true
   validates :user_name, presence: true
+  validates :cpf, presence: true, uniqueness: true
+  validates :bloc, presence: true
+  validates :ap, presence: true
+  validates :pre_registration_id, presence: true, uniqueness: true
 
   def set_default_role
     self.role ||= :user

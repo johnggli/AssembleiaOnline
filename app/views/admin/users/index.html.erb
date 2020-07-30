@@ -32,9 +32,9 @@
       <tr>
         <td><%= user.id %></td>
         <td><%= user.user_name %></td>
-        <td><%= user.pre_registration.cpf %></td>
-        <td><%= user.pre_registration.bloc %></td>
-        <td><%= user.pre_registration.ap %></td>
+        <td><%= user.cpf %></td>
+        <td><%= user.bloc %></td>
+        <td><%= user.ap %></td>
         <td><%= user.role %></td>
         <td>
           <% if (user.paid) ? @class_name = 'badge badge-success' : @class_name = 'badge badge-danger'%><% end %>

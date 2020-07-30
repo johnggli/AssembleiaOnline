@@ -3,6 +3,9 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
+#  ap                     :integer
+#  bloc                   :integer
+#  cpf                    :string
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  paid                   :boolean          default(TRUE)

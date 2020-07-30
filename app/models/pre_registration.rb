@@ -10,6 +10,8 @@
 #  updated_at :datetime         not null
 #
 class PreRegistration < ApplicationRecord
+    default_scope { order(id: :desc) }
+
     BLOC = (1..36).to_a.freeze
     AP = [
         101, 102, 103, 104,
@@ -18,8 +20,6 @@ class PreRegistration < ApplicationRecord
         401, 402, 403, 404,
         501, 502, 503, 504
     ].freeze
-
-    default_scope { order(id: :desc) }
     
     has_one :user, dependent: :destroy
 

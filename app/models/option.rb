@@ -18,11 +18,12 @@
 #
 class Option < ApplicationRecord
   belongs_to :topic
+  
+  has_many :votes, dependent: :destroy, inverse_of: :option
+  has_many :users, through: :votes
 
   validates :description, presence: true
-  
-  has_many :votes
-  has_many :users, through: :votes
+  validates :topic_id, presence: true
 
   def percent_votes
     topic.sum_votes.zero? ? 0 : ((votes.count/topic.sum_votes.to_f)*100).round(2)

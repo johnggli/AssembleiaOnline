@@ -21,12 +21,15 @@ class Topic < ApplicationRecord
   default_scope { order(id: :desc) }
 
   belongs_to :assembly, inverse_of: :topics, counter_cache: true
+  has_many :options, dependent: :destroy, inverse_of: :topic
+  
+  accepts_nested_attributes_for :options, reject_if: :all_blank, allow_destroy: true
 
   has_rich_text :description
 
-  has_many :options, dependent: :destroy
-
-  accepts_nested_attributes_for :options, reject_if: :all_blank, allow_destroy: true
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :assembly_id, presence: true
 
   def sum_votes
     options.map { |option| option.votes.count }.sum

@@ -37,7 +37,8 @@
         description: Descrição
       topic:
         title: Título
-        text: Descrição
+        assembly: Assembléia
+        description: Descrição
       options:
         description: Descrição
       

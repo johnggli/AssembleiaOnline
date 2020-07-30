@@ -75,20 +75,26 @@ end
 
 User.create!(
   user_name: "Administrador",
-  role: 'admin',
   email: "admin@admin.com",
+  role: 'admin',
   password: DEFAULT_PASSWORD,
   password_confirmation: DEFAULT_PASSWORD,
-  pre_registration_id: 1
+  pre_registration_id: 1,
+  cpf: PreRegistration.find(1).cpf,
+  bloc: PreRegistration.find(1).bloc,
+  ap: PreRegistration.find(1).ap
 )
 
 User.create!(
   user_name: "Usuário",
-  role: 'user',
   email: "user@user.com",
+  role: 'user',
   password: DEFAULT_PASSWORD,
   password_confirmation: DEFAULT_PASSWORD,
-  pre_registration_id: 2
+  pre_registration_id: 2,
+  cpf: PreRegistration.find(2).cpf,
+  bloc: PreRegistration.find(2).bloc,
+  ap: PreRegistration.find(2).ap
 )
 
 

@@ -1,5 +1,5 @@
 class Admin::TopicsController < AdminController
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :set_topic, only: [:show, :edit, :update, :destroy, :report]
 
   # GET /topics
   # GET /topics.json
@@ -14,7 +14,6 @@ class Admin::TopicsController < AdminController
   end
 
   def report
-    @topic = Topic.find(params[:topic_id])
     @votes = Vote.includes(:user, :option).where(option_id: [@topic.options.pluck(:id)])
     @max_votes = User.where(paid: true).count
   end

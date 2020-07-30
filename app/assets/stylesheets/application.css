@@ -48,3 +48,7 @@ table {
 .user-navbar {
   background: #004466;
 }
+
+.devise-container {
+  padding-top: 64px;
+}

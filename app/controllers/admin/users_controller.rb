@@ -1,6 +1,6 @@
 class Admin::UsersController < AdminController
   before_action :set_user, only: [:edit, :update, :destroy, :set_paid, :set_not_paid]
-
+  after_action :up_params, only: [:create, :update]
   def index
     @q = User.ransack(params[:q])
     @users = @q.result.page(params[:page]).per(5)
@@ -11,7 +11,6 @@ class Admin::UsersController < AdminController
   end
 
   def create
-    #@user = User.new(user_params)
     @user = User.create_with_password(user_params)
     respond_to do |format|
       if @user.save
@@ -64,8 +63,13 @@ class Admin::UsersController < AdminController
   def set_user
     @user = User.find(params[:id])
   end
+
   def user_params
     params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :pre_registration_id, :role, :paid)
+  end
+
+  def up_params
+    @user.update(cpf: @user.pre_registration.cpf, ap: @user.pre_registration.ap, bloc: @user.pre_registration.bloc )
   end
 
 end

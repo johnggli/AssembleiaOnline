@@ -63,7 +63,8 @@ $ sudo apt-get install postgresql postgresql-contrib libpq-dev
 # MacOS
 $ brew install postgresql
 
-# To make it easier to manage your development databases, create a PostgreSQL user with the same name as your OS user
+# To make it easier to manage your development databases,
+# create a PostgreSQL user with the same name as your OS user
 $ sudo -u postgres createuser -rds <username>
 
 # Then, create a database with the same name as your user
@@ -76,6 +77,29 @@ Type "help" for help.
 
 user=#
 ```
+
+**Install node_modules dependencies**
+
+```bash
+$ yarn install
+```
+
+**Run the migrations**
+
+```bash
+$ rails db:create db:migrate db:seed
+
+# Or simply run the rake task
+$ rails dev:setup
+```
+
+**Run the server**
+
+```bash
+$ rails server
+```
+
+---
 
 ## :boy: Developers
 - [John Emerson](https://johnemerson1406.github.io/linktree/)

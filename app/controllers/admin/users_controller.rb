@@ -1,6 +1,5 @@
 class Admin::UsersController < AdminController
   before_action :set_user, only: [:edit, :update, :destroy, :set_paid, :set_not_paid]
-  after_action :up_params, only: [:create, :update]
   def index
     @q = User.ransack(params[:q])
     @users = @q.result.page(params[:page]).per(5)
@@ -59,17 +58,24 @@ class Admin::UsersController < AdminController
     redirect_to admin_users_path
   end
 
+  def search
+    data = PreRegistration.find(params[:id])
+    if(data.present?)
+      render json: {
+        id: data.id, cpf: data.cpf, bloc: data.bloc, ap: data.ap 
+      }
+    else
+      render json: { error: true}
+    end
+  end
+
   private
   def set_user
     @user = User.find(params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :pre_registration_id, :role, :paid)
-  end
-
-  def up_params
-    @user.update(cpf: @user.pre_registration.cpf, ap: @user.pre_registration.ap, bloc: @user.pre_registration.bloc )
+    params.require(:user).permit(:user_name, :email, :password, :password_confirmation, :pre_registration_id, :role, :paid, :cpf, :ap, :bloc)
   end
 
 end

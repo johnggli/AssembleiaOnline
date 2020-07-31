@@ -26,4 +26,6 @@ Rails.application.routes.draw do
 
   get 'admin/topics/:id/report', to: 'admin/topics#report', as: :report
 
+  get '/new_user_admin', to: 'admin/users#search', as: :search
+
 end

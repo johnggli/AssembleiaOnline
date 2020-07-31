@@ -60,3 +60,14 @@ $(document).ready(function () {
     $('.votes-list').html("Carregando..")
   })
 })
+
+$(document).ready(function () {
+  $('.new-user-admin').on( "click" ,function () {
+    let id = $('.new-user-admin').val()
+    $.get('/new_user_admin?id=' + id, function(data) {
+      $('.search_cpf').val(data.cpf)
+      $('.search_ap').val(data.ap)
+      $('.search_bloc').val(data.bloc)
+    })
+  })
+})

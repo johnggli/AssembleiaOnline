@@ -11,6 +11,7 @@ class Admin::AssembliesController < AdminController
   # GET /assemblies/1
   # GET /assemblies/1.json
   def show
+    @max_votes = User.where(paid: true).count
   end
 
   # GET /assemblies/new

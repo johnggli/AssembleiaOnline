@@ -35,7 +35,7 @@ class Admin::TopicsController < AdminController
     respond_to do |format|
       if @topic.save
         flash[:success] = Topic.model_name.human + ' ' + t('success.create')
-        format.html { redirect_to admin_topics_path }
+        format.html { redirect_to admin_topic_path(@topic) }
         format.json { render :show, status: :created, location: @topic }
       else
         format.html { render :new }
@@ -50,7 +50,7 @@ class Admin::TopicsController < AdminController
     respond_to do |format|
       if @topic.update(topic_params)
         flash[:success] = Topic.model_name.human + ' ' + t('success.update')
-        format.html { redirect_to admin_topics_path }
+        format.html { redirect_to admin_topic_path(@topic) }
         format.json { render :show, status: :ok, location: @topic }
       else
         format.html { render :edit }

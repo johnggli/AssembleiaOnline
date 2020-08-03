@@ -23,7 +23,6 @@ class Option < ApplicationRecord
   has_many :users, through: :votes
 
   validates :description, presence: true
-  validates :topic_id, presence: true
 
   def percent_votes
     topic.sum_votes.zero? ? 0 : ((votes.count/topic.sum_votes.to_f)*100).round(2)

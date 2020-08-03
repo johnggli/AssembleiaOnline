@@ -29,7 +29,7 @@
     <% @pre_registrations.each do |pre_registration| %>
       <tr>
         <td><%= pre_registration.id %></td>
-        <td><%= pre_registration.cpf %></td>
+        <td><%= link_to pre_registration.cpf, admin_pre_registration_path(pre_registration) %></td>
         <td><%= pre_registration.bloc %></td>
         <td><%= pre_registration.ap %></td>
         <td><%= l(pre_registration.created_at, format: '%d/%m/%Y - %H:%M') %></td>

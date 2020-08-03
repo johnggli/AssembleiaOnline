@@ -31,7 +31,7 @@ class Admin::PreRegistrationsController < AdminController
     respond_to do |format|
     if @pre_registration.save
       flash[:success] = PreRegistration.model_name.human + ' ' + t('success.create')
-      format.html { redirect_to admin_pre_registrations_path }
+      format.html { redirect_to admin_pre_registration_path(@pre_registration) }
         format.json { render :show, status: :created, location: @pre_registration }
       else
         format.html { render :new }
@@ -46,7 +46,7 @@ class Admin::PreRegistrationsController < AdminController
     respond_to do |format|
       if @pre_registration.update(pre_registration_params)
         flash[:success] = PreRegistration.model_name.human + ' ' + t('success.update')
-        format.html { redirect_to admin_pre_registrations_path }
+        format.html { redirect_to admin_pre_registration_path(@pre_registration) }
         format.json { render :show, status: :ok, location: @pre_registration }
       else
         format.html { render :edit }

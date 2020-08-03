@@ -1,8 +1,11 @@
 class Admin::UsersController < AdminController
-  before_action :set_user, only: [:edit, :update, :destroy, :set_paid, :set_not_paid]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :set_paid, :set_not_paid]
   def index
     @q = User.ransack(params[:q])
     @users = @q.result.page(params[:page]).per(5)
+  end
+
+  def show
   end
 
   def new
@@ -14,7 +17,7 @@ class Admin::UsersController < AdminController
     respond_to do |format|
       if @user.save
         flash[:success] = User.model_name.human + ' ' + t('success.create')
-        format.html { redirect_to admin_users_path }
+        format.html { redirect_to admin_user_path(@user) }
         format.json { render :show, status: :created, location: @user }
         else
           format.html { render :new }
@@ -30,7 +33,7 @@ class Admin::UsersController < AdminController
     respond_to do |format|
       if @user.update(user_params)
         flash[:success] = User.model_name.human + ' ' + t('success.update')
-        format.html { redirect_to admin_users_path }
+        format.html { redirect_to admin_user_path(@user) }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }

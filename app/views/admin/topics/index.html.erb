@@ -28,8 +28,8 @@
     <% @topics.each do |topic| %>
       <tr>
         <td><%= topic.id %></td>
-        <td><%= topic.title %></td>
-        <td><%= topic.assembly.title %></td>
+        <td><%= link_to topic.title, admin_topic_path(topic) %></td>
+        <td><%= link_to topic.assembly.title, admin_assembly_path(topic.assembly) %></td>
         <td><%= topic.sum_votes %></td>
         <td>
           <%= link_to t('links.report'), report_path(topic), class:"btn btn-info" %>

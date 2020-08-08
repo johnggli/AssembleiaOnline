@@ -1,0 +1,67 @@
+pt-BR:
+  hello: Olá 
+  login: Entrar
+  logout: Sair
+  sign_in: Fazer Login
+  sign_up: Cadastrar-se
+  username: Nome completo
+  actions: Ações
+  options: Opções
+  new_option: Nova opção
+  remove_option: Remover opção
+  title: Título
+  "yes": Sim
+  "no": Não
+  no_ata: Sem ata
+  remove_ata: Remover Ata
+  confirm: 'Você tem certeza?'
+  situation: Situação
+  voting_topics: tópicos para votação
+  users_only: Apenas para moradores
+  day: Dia
+  closure: Encerramento
+  latest: Últimas
+  all_assemblies: Todas as Assembléias
+  relatory: Relatório de votos
+  links:
+    home: Início
+    new: Novo(a)
+    edit: Editar
+    delete: Deletar
+    block: Bloquear
+    release: Liberar
+    open: Abrir
+    close: Fechar
+    cancel: Cancelar
+    back: Voltar
+    report: Relatório
+    details: Detalhes
+    ata_download: Download da ATA
+  state:
+    open: Ativa
+    close: Finalizado
+    sketch: Rascunho
+  submit:
+    create: Criar
+    update: Atualizar
+  select:
+    cpf: Selecione um CPF
+    bloc: Selecione um Bloco
+    ap: Selecione um Apartamento
+    assembly: Selecione uma Assembléia
+    type: Selecione um tipo
+  success:
+    create: foi criado com sucesso!
+    update: foi atualizado com sucesso!
+    delete: foi deletado com sucesso!
+  message: O histórico de todas as Assembléias são mantidos no sistema caso algum morador deseje realizar alguma consulta.
+  date: Data
+  to: Até
+  of: de
+  vote_history: Histórico de votos
+  pre_registration_not_found: CPF não encontrado
+  vote: Votar
+  voted: Votou
+  deny_access: Você não tem permissão para esta página
+  login_info: Para continuar, efetue login ou registre-se
+  finish_time_error: deve ser posterior à data de início

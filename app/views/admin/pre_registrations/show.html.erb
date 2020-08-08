@@ -1,0 +1,22 @@
+<h1>
+  <%= PreRegistration.model_name.human %>
+</h1>
+
+<hr>
+
+<p>
+  <strong><%= PreRegistration.human_attribute_name(:cpf) %>:</strong>
+  <%= @pre_registration.cpf %>
+</p>
+
+<p>
+  <strong><%= PreRegistration.human_attribute_name(:bloc) %>:</strong>
+  <%= @pre_registration.bloc %>
+</p>
+
+<p>
+  <strong><%= PreRegistration.human_attribute_name(:ap) %>:</strong>
+  <%= @pre_registration.ap %>
+</p>
+
+<%= link_to t('links.back'), admin_pre_registrations_path, class:"btn btn-primary" %>

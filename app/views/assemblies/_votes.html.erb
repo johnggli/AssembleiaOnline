@@ -1,0 +1,27 @@
+<h4>
+  <strong><%= @topic.sum_votes %></strong>
+  <span class="text-secondary">
+    / <%= @max_votes %> <%= Vote.model_name.human(count: 2) %>
+  </span>
+</h4>
+
+<div class="list-group">
+  <% @votes.each do |vote| %>
+    <div class="list-group-item text-capitalize">
+      <dl>
+        <dd>
+          <strong>
+            <%= vote.user.user_name.capitalize %> (
+              <%= PreRegistration.human_attribute_name(:bloc) %> - <%= PreRegistration.find(vote.user.pre_registration_id).bloc %> /
+              <%= PreRegistration.human_attribute_name(:ap) %> - <%= PreRegistration.find(vote.user.pre_registration_id).ap %>
+            )
+            <%= l(vote.created_at, format: '%d/%m/%Y %H:%M') %>
+          </strong>
+        </dd>
+        <dd>
+          <%= t('voted') %>: <%= vote.option.description %>
+        </dd>
+      </dl>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assembleia</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'small-business' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <%= render "layouts/admin_nav" %>
+    <div class="container">
+      <%= render 'layouts/notice' %>
+      <%= yield %>  
+    </div>
+
+    <%= render "layouts/footer" %>
+  </body>
+</html>

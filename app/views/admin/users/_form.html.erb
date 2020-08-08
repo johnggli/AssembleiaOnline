@@ -1,0 +1,31 @@
+<%= simple_form_for @user, url: url, method: method  do |p| %>
+  <div class="form-group ">
+    <%= p.association :pre_registration, label: PreRegistration.model_name.human, label_method: :cpf, 
+        input_html: {class:'new-user-admin w-50'},value_method: :id, include_blank: t('select.cpf') %>
+  
+    <label for="cpf"><%= PreRegistration.human_attribute_name('cpf') %></label>
+    <input disabled type='text' class='search_cpf form-control w-50' id="cpf"><br>
+
+    <label for="bloc"><%= PreRegistration.human_attribute_name('bloc') %></label>
+    <input disabled type='text' class='search_bloc form-control w-50' id="bloc"><br>
+          
+    <label for="ap"><%= PreRegistration.human_attribute_name('ap') %></label>
+    <input disabled type='text' class='search_ap form-control w-50' id="ap"><br>
+
+    <%= p.hidden_field :cpf ,class:'search_cpf form-control' %>
+    <%= p.hidden_field :bloc, class:'search_bloc form-control' %>
+    <%= p.hidden_field :ap, class:'search_ap form-control' %>
+    <%= p.input :user_name, input_html: {class:"form-control w-50"} %>
+    <%= p.input :email, input_html: {class:"form-control w-50"} %>
+    <%= p.input :role, collection: User.roles.keys.map {|role| [role.titleize,role]}, include_blank: false, input_html: {class:"form-control w-50"} %>
+  </div>  
+  <hr>
+
+  <div>
+    <%= p.submit controller.action_name == 'edit' ?
+      t('submit.update') + ' ' + User.model_name.human :
+      t('submit.create') + ' ' + User.model_name.human,
+      class:'btn btn-success' %>
+    <%= link_to t('links.cancel'), admin_users_path, class:'btn btn-danger' %>
+  </div>
+<% end %>

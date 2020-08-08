@@ -1,0 +1,44 @@
+"pt-BR":
+  activerecord:
+    models:
+      pre_registration:
+        one: Pré-Registro
+        other: Pré-Registros
+      user:
+        one: Usuário
+        other: Usuários
+      assembly: 
+        one: Assembléia
+        other: Assembléias
+      topic: 
+        one: Tópico
+        other: Tópicos
+      option: 
+        one: Opção
+        other: Opções
+      vote: 
+        one: Voto
+        other: Votos     
+    attributes:
+      pre_registration:
+        cpf: CPF
+        bloc: Bloco
+        ap: Apartamento
+        created_at: Criado em
+      user:
+        user_name: Nome Completo
+        role: Permissão
+        paid: Adimplente
+      assembly:
+        title: Título
+        start_time: Início
+        finish_time: Encerramento
+        state: Situação
+        description: Descrição
+      topic:
+        title: Título
+        assembly: Assembléia
+        description: Descrição
+      options:
+        description: Descrição
+      

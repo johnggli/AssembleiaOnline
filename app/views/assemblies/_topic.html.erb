@@ -1,0 +1,39 @@
+<% topic.reload %>
+<div class="card">
+  <div class="card-header">
+    <div class="row text-center align-items-center">
+      <div class="col">
+        <h5>#<%= topic.title %></h5>
+      </div>
+
+      <%= button_to t('vote_history'), history_votes_path(topic.id), class: "btn btn-outline-info
+          btn-sm button-history-votes", data: { toggle: "modal", target: "#myModal" }, method: :get, remote: true %>
+
+    </div>
+  </div>
+
+  <div class="card-body text-center">
+    <h4>
+      <strong class="total_votes_<%=topic.id%>"><%= topic.sum_votes %></strong>
+      <span class="text-secondary">
+        / <%= @max_votes %> <%= Vote.model_name.human(count: 2) %>
+      </span>
+    </h4>
+
+    <p>
+      <%= topic.description %>
+    </p>
+    <div class='result_text_<%=topic.id%>'>
+      <% if (@assembly.start_time <= Time.now && @assembly.finish_time >= Time.now) && 
+        !topic.user_voted(current_user.id) && current_user.paid %>
+        <% if @assembly.state == 'close' %>
+          <%= render 'assemblies/result_votes', topic: topic %>
+        <% else %>
+          <%= render 'assemblies/options_vote', topic: topic %>
+        <% end %>
+      <% else %>
+        <%= render 'assemblies/result_votes', topic: topic %>
+      <% end %>
+    </div>
+  </div>
+</div>

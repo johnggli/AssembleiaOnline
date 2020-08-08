@@ -1,0 +1,5 @@
+<h1><%= t('links.edit') + ' ' + User.model_name.human %></h1>
+
+<hr>
+
+<%= render 'form', url: admin_user_path, method: :put %>

@@ -1,0 +1,5 @@
+<h1><%= t('links.new') + ' ' + Topic.model_name.human %></h1>
+
+<hr>
+
+<%= render 'form', url: admin_topics_path, method: :post %>

@@ -1,0 +1,2 @@
+$('.result_text_<%= @topic_render.id %>').html("<%= j(render 'assemblies/result_votes', 'topic': @topic_render) -%>")
+$('.total_votes_<%= @topic_render.id %>').html("<%= @votes_count %>")

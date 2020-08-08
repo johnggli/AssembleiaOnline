@@ -1,0 +1,93 @@
+<h1>
+  <%= Assembly.model_name.human %>
+  <%= link_to t('links.delete'), admin_assembly_path(@assembly), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger new" %>
+  <%= link_to t('links.edit'), edit_admin_assembly_path(@assembly), class:"btn btn-primary new" %>
+  <%= link_to t('links.back'), admin_assemblies_path, class:"btn btn-secondary new" %>
+  <%= link_to t('links.new'), new_admin_assembly_path, class:"btn btn-info new" %>
+</h1>
+
+<hr>
+
+<p>
+  <strong><%= Assembly.human_attribute_name(:title) %></strong>
+  <%= @assembly.title %>
+</p>
+
+<p>
+  <strong><%= Assembly.human_attribute_name(:start_time) %></strong>
+  <%= l(@assembly.start_time, format: '%d/%m/%Y - %H:%M') %>
+</p>
+
+<p>
+  <strong><%= Assembly.human_attribute_name(:finish_time) %></strong>
+  <%= l(@assembly.finish_time, format: '%d/%m/%Y - %H:%M') %>
+</p>
+
+<p>
+  <strong><%= Assembly.human_attribute_name(:state) %></strong>
+  <% if @assembly.state == 'open' %>
+    <span class="badge badge-success"><%= t('state.open') %></span>
+  <% elsif @assembly.state == 'close' %>
+    <span class="badge badge-danger"><%= t('state.close') %></span>
+  <% else %>
+    <span class="badge badge-warning"><%= t('state.sketch') %></span>
+  <% end %>
+</p>
+
+<p>
+  <strong><%= Assembly.human_attribute_name(:ata) %></strong>
+  <% if @assembly.ata.present? %>
+    <%= link_to @assembly.ata.blob.filename.sanitized, rails_blob_path(@assembly.ata, disposition: 'attachment') %>
+    <%#= @assembly.ata.blob.filename.sanitized %>
+  <% else %>
+    <%= t('no_ata') %>
+  <% end %>
+</p>
+
+<p>
+  <strong><%= Assembly.human_attribute_name(:description) %></strong>
+  <%= @assembly.description %>
+</p>
+
+<hr>
+<br>
+
+<div class="card">
+  <div class="card-body text-center">
+    <h2>
+      <span class="text-capitalize"><%= t('voting_topics') %></span>
+      <%= link_to t('links.new'), new_admin_topic_path, class:"btn btn-primary" %>
+    </h2>
+  </div>
+  <div class="card-body">
+    <div class="card-columns">
+      <% @assembly.topics.order(:id).includes(:options).each do |topic| %>
+        <div id="show_topic_<%= topic.id %>">
+          <%= render 'admin/assemblies/topic', topic: topic %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body votes-list"></div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

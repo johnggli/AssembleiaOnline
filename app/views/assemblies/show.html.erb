@@ -1,0 +1,78 @@
+<h1 class="text-center">
+  <%= "##{@assembly.id} #{@assembly.title}" %>
+</h1>
+
+<div class="card">
+  <div class="card-body overflow-auto assembly-description">
+    <%= @assembly.description %>
+  </div>
+</div>
+
+<br>
+
+<p class="text-center">
+  <% if @assembly.ata.present? %>
+    <%= link_to t('links.ata_download'), rails_blob_path(@assembly.ata, disposition: 'attachment'), class:"btn btn-dark" %>
+  <%# else %>
+    <%#= t('no_ata') %>
+  <% end %>
+</p>
+
+<h3 class="text-center text-secondary">
+  <%= Assembly.human_attribute_name(:state) %>
+  <% if @assembly.state == 'open' %>
+    <span class="badge badge-success"><%= t('state.open') %></span>
+  <% elsif @assembly.state == 'close' %>
+    <span class="badge badge-danger"><%= t('state.close') %></span>
+  <% else %>
+    <span class="badge badge-warning"><%= t('state.sketch') %></span>
+  <% end %>
+</h3>
+
+<h3 class="text-center text-secondary">
+  <%= @assembly.topics.size %> <%= t('voting_topics') %>
+</h3>
+
+<h3 class="text-center text-secondary">
+  <%= t('date') %>: <strong> <%= l(@assembly.start_time, format: '%d/%m/%Y %H:%M') %> </strong>
+  <%= t('to') %> <strong> <%= l(@assembly.finish_time, format: '%d/%m/%Y %H:%M') %> </strong>
+</h3>
+
+<br>
+
+<div class="card">
+  <div class="card-body text-center">
+    <h2 class="text-capitalize"><%= t('voting_topics') %></h2>
+  </div>
+  <div class="card-body">
+    <div class="card-columns">
+      <% @assembly.topics.order(:id).includes(:options).each do |topic| %>
+        <div id="show_topic_<%= topic.id %>">
+          <%= render 'assemblies/topic', topic: topic %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body votes-list"></div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

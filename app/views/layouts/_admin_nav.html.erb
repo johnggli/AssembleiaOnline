@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><%= Assembly.model_name.human %> Admin</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item <%= 'active' if current_page? controller: :assemblies %>">
+            <%= link_to Assembly.model_name.human(count: 2), admin_assemblies_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item <%= 'active' if current_page? controller: :topics %>">
+            <%= link_to Topic.model_name.human(count: 2), admin_topics_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item <%= 'active' if current_page? controller: :users %>">
+            <%= link_to User.model_name.human(count: 2), admin_users_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item <%= 'active' if current_page? controller: :pre_registrations %>">
+            <%= link_to PreRegistration.model_name.human(count: 2), admin_pre_registrations_path, class:'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('links.home'), home_index_path, class:'nav-link' %>
+          </li>
+          <li class="hello-user nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              <%= t('hello') + ', ' + current_user.user_name %>
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to t('links.edit'), edit_user_registration_path, class:'dropdown-item' %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('logout'), destroy_user_session_path, method: :delete, data: { confirm: t('confirm') }, class:'btn btn-danger ml-3' %>
+          </li>
+        </ul>
+      </div>
+    </div>
+</nav>

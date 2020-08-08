@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: assemblies
+#
+#  id           :bigint           not null, primary key
+#  ata          :string
+#  description  :text
+#  finish_time  :datetime
+#  start_time   :datetime
+#  state        :integer
+#  title        :string
+#  topics_count :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+one:
+  title: MyString
+  start_time: 2020-07-16 22:39:02
+  finish_time: 2020-07-16 22:39:02
+  description: MyText
+  status: 1
+  topics_count: 1
+  url_ata: MyString
+
+two:
+  title: MyString
+  start_time: 2020-07-16 22:39:02
+  finish_time: 2020-07-16 22:39:02
+  description: MyText
+  status: 1
+  topics_count: 1
+  url_ata: MyString

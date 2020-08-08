@@ -1,0 +1,10 @@
+<div class="text-center">
+  <h1><%= @topic.assembly.title %></h1>
+  <h4 class="text-secondary text-center w-75 m-auto" ><%= "#{t('relatory')}: #{@topic.title}" %></h4>
+</div>
+<br>
+<%= render 'assemblies/votes', topic: @topic %>
+<hr>
+<div class="text-right">
+  <%= link_to t('links.back'), admin_topics_path, class:'btn btn-info' %>
+</div>

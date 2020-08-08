@@ -1,0 +1,13 @@
+<div class="text-center">
+  <%= search_form_for @q, url: admin_assemblies_path, class: 'form-inline d-flex justify-content-center' do |f| %>
+    <%= f.search_field :title_cont, placeholder: Assembly.human_attribute_name(:title), class: 'form-control' %>&nbsp;
+    <%= f.select(:state_eq, options_for_select(Assembly.states.to_a.map { |w| [t('state.' + w[0]), w[1]] }), { include_blank: t('situation') }, {class: "form-control" }) %>&nbsp;
+
+    <%= f.datetime_field :start_time_gteq, as: :datetime, html5: true, class: 'form-control' %>&nbsp;
+    <span><%= t('to') %></span>&nbsp;
+    <%= f.datetime_field :finish_time_lteq, as: :datetime, html5: true, class: 'form-control' %>&nbsp;
+
+    <%= f.submit class: 'btn btn-outline-primary' %>&nbsp;
+    <%= link_to "&#10799;".html_safe, request.path, class: "font-weight-bold btn btn-outline-secondary" %>
+  <% end %>
+</div>

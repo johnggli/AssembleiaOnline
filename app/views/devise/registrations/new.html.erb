@@ -1,0 +1,73 @@
+<%= render "layouts/user_nav" %>
+
+<div class="container text-center devise-container">
+
+  <h2 class="font-weight-bold p-3"><%= t('sign_up') %></h2>
+
+  <div class="card card-body col-lg-6 m-auto">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+      <%= render "devise/shared/error_messages", resource: resource %>
+
+      <div class="alert alert-danger form-group search_error d-none" role="alert">
+        <%= t('pre_registration_not_found') %>
+      </div>
+
+      <div class="form-group">
+        <label for="pre_registration_cpf"><%= PreRegistration.model_name.human %>
+        <%= PreRegistration.human_attribute_name('cpf') %></label>
+        <input type='text' class='search_pre_registration form-control' id="pre_registration_cpf" maxlength="14" required autofocus><br>
+        
+        <label for="cpf"><%= PreRegistration.human_attribute_name('cpf') %></label>
+        <input disabled type='text' class='search_cpf form-control' id="cpf"><br>
+
+        <label for="bloc"><%= PreRegistration.human_attribute_name('bloc') %></label>
+        <input disabled type='text' class='search_bloc form-control' id="bloc"><br>
+        
+        <label for="ap"><%= PreRegistration.human_attribute_name('ap') %></label>
+        <input disabled type='text' class='search_ap form-control' id="ap"><br>
+      </div>
+
+      <div class="form-group">
+        <%= f.hidden_field :pre_registration_id, class:'search_id' %>
+        <%= f.hidden_field :cpf ,class:'search_cpf form-control' %>
+        <%= f.hidden_field :bloc, class:'search_bloc form-control' %>
+        <%= f.hidden_field :ap, class:'search_ap form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label t('username') %>
+        <%= f.text_field :user_name, class: 'form-control', required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, autocomplete: 'email', class: 'form-control', required: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', required: true %>
+        <% if @minimum_password_length %>
+          <small class="form-text text-muted"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></small>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, autocomplete: 'current-password', class: 'form-control', required: true %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.submit t('sign_up'), class: 'btn btn-primary w-100' %>
+      </div>
+    <% end %>
+  </div>
+  
+  <br>
+
+  <%= render "devise/shared/links" %>
+
+  <%= render "layouts/footer" %>
+
+</div>

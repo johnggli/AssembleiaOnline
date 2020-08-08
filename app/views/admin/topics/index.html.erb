@@ -1,0 +1,44 @@
+<h1>
+  <%= Topic.model_name.human(count: Topic.all.to_a.length()) %>
+  <%= link_to t('links.new'), new_admin_topic_path, class:"btn btn-primary new" %>
+</h1>
+
+<hr>
+
+<%= render 'admin/topics/search' %>
+
+<hr>
+
+<p>
+  <%= page_entries_info @topics %>
+</p>
+
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th>#</th>
+      <th><%= Topic.human_attribute_name(:title) %></th>
+      <th><%= Assembly.model_name.human %></th>
+      <th><%= Vote.model_name.human(count: 2) %></th>
+      <th colspan="3"><%= t('actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @topics.each do |topic| %>
+      <tr>
+        <td><%= topic.id %></td>
+        <td><%= link_to topic.title, admin_topic_path(topic) %></td>
+        <td><%= link_to topic.assembly.title, admin_assembly_path(topic.assembly) %></td>
+        <td><%= topic.sum_votes %></td>
+        <td>
+          <%= link_to t('links.report'), report_path(topic), class:"btn btn-info" %>
+          <%= link_to t('links.edit'), edit_admin_topic_path(topic), class:"btn btn-primary" %>
+          <%= link_to t('links.delete'), admin_topic_path(topic), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @topics %>

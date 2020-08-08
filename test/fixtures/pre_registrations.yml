@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: pre_registrations
+#
+#  id         :bigint           not null, primary key
+#  ap         :integer
+#  bloc       :integer
+#  cpf        :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+one:
+  cpf: MyString
+  bloc: 1
+  ap: 1
+
+two:
+  cpf: MyString
+  bloc: 1
+  ap: 1

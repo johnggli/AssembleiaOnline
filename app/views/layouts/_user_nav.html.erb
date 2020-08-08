@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top user-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="#"><%= Assembly.model_name.human %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item <%= 'active' if controller_name == "home" %>">
+          <%= link_to t('links.home'), home_index_path, class:'nav-link' %>
+        </li>
+        <li class="nav-item <%= 'active' if controller_name == "assemblies" %>">
+          <%= link_to Assembly.model_name.human(count: 2), assemblies_path, class:'nav-link' %>
+        </li>
+        <% if user_signed_in? %>
+          <% if current_user.role == 'admin' %>
+            <li class="nav-item">
+              <%= link_to t('Admin'), admin_assemblies_path, class:'nav-link' %>
+            </li>
+          <% end %>
+          <li class="hello-user nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+              <%= t('hello') + ', ' + current_user.user_name %>
+            </a>
+            <div class="dropdown-menu">
+              <%= link_to t('links.edit'), edit_user_registration_path, class:'dropdown-item' %>
+            </div>
+          </li>
+          <li class="nav-item">
+            <%= link_to t('logout'), destroy_user_session_path, method: :delete, data: { confirm: t('confirm') }, class:'btn btn-danger ml-3' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to t('login'), new_user_session_path, class:'btn btn-success ml-3' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

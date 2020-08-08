@@ -1,0 +1,45 @@
+<h1>
+  <%= PreRegistration.model_name.human(count: PreRegistration.all.to_a.length()) %>
+  <%= link_to t('links.new'), new_admin_pre_registration_path, class:"btn btn-primary new" %>
+</h1>
+
+<hr>
+
+<%= render 'admin/pre_registrations/search' %>
+
+<hr>
+
+<p>
+  <%= page_entries_info @pre_registrations %>
+</p>
+
+<table class="table table-bordered table-hover">
+  <thead class="thead-light">
+    <tr>
+      <th>#</th>
+      <th><%= PreRegistration.human_attribute_name(:cpf) %></th>
+      <th><%= PreRegistration.human_attribute_name(:bloc) %></th>
+      <th><%= PreRegistration.human_attribute_name(:ap) %></th>
+      <th><%= PreRegistration.human_attribute_name(:created_at) %></th>
+      <th colspan="2"><%= t('actions') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pre_registrations.each do |pre_registration| %>
+      <tr>
+        <td><%= pre_registration.id %></td>
+        <td><%= link_to pre_registration.cpf, admin_pre_registration_path(pre_registration) %></td>
+        <td><%= pre_registration.bloc %></td>
+        <td><%= pre_registration.ap %></td>
+        <td><%= l(pre_registration.created_at, format: '%d/%m/%Y - %H:%M') %></td>
+        <td>
+          <%= link_to t('links.edit'), edit_admin_pre_registration_path(pre_registration), class:"btn btn-primary" %>
+          <%= link_to t('links.delete'), admin_pre_registration_path(pre_registration), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @pre_registrations %>

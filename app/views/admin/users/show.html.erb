@@ -1,0 +1,40 @@
+<h1>
+  <%= User.model_name.human %>
+</h1>
+
+<hr>
+
+<p>
+  <strong><%= User.human_attribute_name(:user_name) %>:</strong>
+  <%= @user.user_name %>
+</p>
+
+<p>
+  <strong><%= PreRegistration.human_attribute_name(:cpf) %>:</strong>
+  <%= @user.cpf %>
+</p>
+
+<p>
+  <strong><%= PreRegistration.human_attribute_name(:bloc) %>:</strong>
+  <%= @user.bloc %>
+</p>
+
+<p>
+  <strong><%= PreRegistration.human_attribute_name(:ap) %>:</strong>
+  <%= @user.ap %>
+</p>
+
+<p>
+  <strong><%= User.human_attribute_name(:role) %>:</strong>
+  <%= @user.role %>
+</p>
+
+<p>
+  <strong><%= User.human_attribute_name(:paid) %>:</strong>
+  <% if (@user.paid) ? @class_name = 'badge badge-success' : @class_name = 'badge badge-danger'%><% end %>
+  <span class="<%= @class_name %>">
+    <%= @user.paid ? t('yes') : t('no') %>
+  </span>
+</p>
+
+<%= link_to t('links.back'), admin_users_path, class:"btn btn-primary" %>

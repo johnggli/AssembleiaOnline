@@ -1,0 +1,55 @@
+<h1>
+  <%= Topic.model_name.human %>
+  <%= link_to t('links.delete'), admin_topic_path(@topic), method: :delete, data: { confirm: t('confirm') }, class:"btn btn-danger new" %>
+  <%= link_to t('links.edit'), edit_admin_topic_path(@topic), class:"btn btn-primary new" %>
+  <%= link_to t('links.back'), admin_topics_path, class:"btn btn-secondary new" %>
+  <%= link_to t('links.new'), new_admin_topic_path, class:"btn btn-info new" %>
+</h1>
+
+<hr>
+
+<p>
+  <strong><%= Topic.human_attribute_name(:title) %>:</strong>
+  <%= @topic.title %>
+</p>
+
+<p>
+  <strong><%= Assembly.model_name.human %>:</strong>
+  <%= @topic.assembly.title %>
+</p>
+
+<p>
+  <strong><%= Vote.model_name.human(count: 2) %>:</strong>
+  <%= @topic.sum_votes %>
+</p>
+
+<p>
+  <strong><%= Topic.human_attribute_name(:description) %>:</strong>
+  <%= @topic.description %>
+</p>
+
+<hr>
+<br>
+
+<div class="card">
+  <div class="card-body text-center">
+    <h2><%= Option.model_name.human(count: 2) %></h2>
+  </div>
+  <div class="card-body">
+    <div class="card-columns">
+      <% @topic.options.each do |option| %>
+          <div class="card">
+            <div class="card-header text-center">
+              <h4><%= option.description %></h4>
+            </div>
+            <h3 class="card-body text-center">
+              <strong><%= option.votes.count %></strong>
+              <span class="text-secondary">
+                <%= Vote.model_name.human(count: option.votes.count) %>
+              </span>
+            </h3>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

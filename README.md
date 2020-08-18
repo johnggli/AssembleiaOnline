@@ -16,6 +16,8 @@
   <a href="#boy-developers">Developers</a>
 </p>
 
+---
+
 ## :bulb: About the project
 
 - This project is about a system for managing condominium assemblies, in which residents (users) can register, through a pre-registration, and vote on assembly topics. The system also provides an option for the user to view the voting history of the assembly, in addition to having an administrative part, which manages the system.

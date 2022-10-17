@@ -1,12 +1,18 @@
-<h1 align="center"><span><img src="https://avatars2.githubusercontent.com/u/17027663?s=280&v=4" width="100" /></span><br/>Assembléia Treinamento</h1>
-<h3 align="center">Project developed by the interns in order to improve and learn more about ruby on rails.</h3>
+<h1 align="center"><span><img src="https://avatars2.githubusercontent.com/u/17027663?s=280&v=4" width="100" /></span><br/>Assembléia Online</h1>
+<h3 align="center">A system for managing online condominium assemblies.</h3>
 
 <p align="center">
-  <img alt="Ruby version" src="https://img.shields.io/badge/ruby-2.6.5-informational?logo=ruby&color=%23e65100">
-  
-  <img alt="Rails version" src="https://img.shields.io/badge/rails-6.0.3-informational?logo=ruby-on-rails&color=%23e65100">
-  
-  <img alt="Yarn version" src="https://img.shields.io/badge/yarn-1.22.4-informational?logo=yarn&color=%23e65100">
+  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/johnggli/AssembleiaOnline?color=ff5722&labelColor=000000">
+
+  <a href="https://www.linkedin.com/in/johnggli/">
+    <img alt="Made by" src="https://img.shields.io/static/v1?label=made%20by&message=John%20Emerson&color=ff5722&labelColor=000000">
+  </a>
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/johnggli/AssembleiaOnline?color=ff5722&labelColor=000000">
+
+  <a href="https://github.com/johnggli/AssembleiaOnline/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/johnggli/AssembleiaOnline?color=ff5722&labelColor=000000">
+  </a>
 </p>
 
 <p align="center">
